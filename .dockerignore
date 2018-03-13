@@ -1,0 +1,6 @@
+Dockerfile
+*.md
+helm/
+.gitignore
+.drone.yml
+.editorconfig

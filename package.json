@@ -1,0 +1,79 @@
+{
+  "name": "grommet-controls-sample",
+  "version": "0.1.0",
+  "main": "src/js/index.js",
+  "description": "sample app using Grommet Controls with Grommet 2.0",
+  "homepage": "https://grommet-nextjs.herokuapp.com",
+  "bugs": "https://github.com/atanasster/grommet-controls-sample/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atanasster/grommet-controls-sample.git"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development grommet pack",
+    "dev-alias": "cross-env NODE_ENV=development USE_ALIAS=true grommet pack",
+    "dist": "cross-env NODE_ENV=production grommet pack",
+    "test": "grommet check -t",
+    "test-update": "grommet check -t -- --updateSnapshot",
+    "test-watch": "grommet check -t -- --watchAll"
+  },
+  "dependencies": {
+    "grommet": "https://github.com/grommet/grommet/tarball/NEXT-stable",
+    "grommet-controls": "^0.14.0",
+    "grommet-icons": "^0.15.0",
+    "prop-types": "^15.5.10",
+    "react": "^16.0.0",
+    "react-desc": "^2.1.0",
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.1.2",
+    "styled-components": "^2.2.0",
+    "url-search-params": "^0.10.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.5.2",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^20.0.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-grommet": "^0.4.0",
+    "babel-plugin-styled-components": "^1.1.7",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^3.1.4",
+    "deep-assign": "^2.0.0",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-parallel": "^0.3.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "grommet-cli": "^5.1.0",
+    "pre-commit": "^1.2.2",
+    "react-dev-utils": "^0.4.2",
+    "react-test-renderer": "^16.0.0",
+    "webpack": "^3.4.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js}"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/templates/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](dist|templates|node_modules)[/\\\\]"
+    ]
+  },
+  "pre-commit": [
+    "test"
+  ]
+}

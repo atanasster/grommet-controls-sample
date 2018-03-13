@@ -1,0 +1,26 @@
+workspace:
+  base: /nodejs
+  path: src/github.com/grommet/next-sample
+pipeline:
+  test:
+    image: node:alpine
+    commands:
+      - export YARN_CACHE_FOLDER=/nodejs/yarncache
+      - NODE_ENV=development yarn
+      - npm run test
+  
+  webpack:
+    image: node:alpine
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - export YARN_CACHE_FOLDER=/nodejs/yarncache
+      - yarn
+      - npm run dist
+    publish:
+    image: plugins/docker
+    repo: grommet/next-sample
+    secrets: [docker_password, docker_username]
+    when:
+      branch: master
+      event: push

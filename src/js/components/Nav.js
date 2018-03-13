@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 
-import { Box, Responsive, RoutedAnchor, Text } from 'grommet';
+import { Box, Responsive, RoutedAnchor, Anchor, Text } from 'grommet';
 import { Radial as GrommetIcon } from 'grommet-icons';
-
-const NavAnchor = ({ path, label }) => (
-  <Box pad={{ horizontal: 'small' }}>
-    <RoutedAnchor path={path} label={label} />
-  </Box>
-);
 
 export default class extends Component {
   state = {}
@@ -30,7 +24,7 @@ export default class extends Component {
             </Box>
           </RoutedAnchor>
           <Box direction='row' align='center'>
-            <NavAnchor path='/git' label='git' />
+            <Anchor href='https://github.com/atanasster/grommet-controls-sample' target='_blank'>git</Anchor>
           </Box>
         </Box>
       </Responsive>

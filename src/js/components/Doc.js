@@ -4,10 +4,6 @@ import { Box, Button, Heading, Paragraph, Text } from 'grommet';
 import Nav from '../components/Nav';
 
 export default class Doc extends Component {
-  componentWillMount() {
-    const { onColorChange } = this.context;
-    onColorChange(['#FFF5CC', '#FFEDED']);
-  }
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -105,6 +101,3 @@ Doc.defaultProps = {
   text: undefined,
 };
 
-Doc.contextTypes = {
-  onColorChange: PropTypes.func,
-};

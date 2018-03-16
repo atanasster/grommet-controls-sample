@@ -22,6 +22,7 @@ import Notification from './screens/Notification';
 import Home from './screens/Home';
 import NumberInput from './screens/NumberInput';
 import PasswordInput from './screens/PasswordInput';
+import Spinning from './screens/Spinning';
 import Tag from './screens/Tag';
 import Tags from './screens/Tags';
 
@@ -105,6 +106,7 @@ export default class App extends Component {
             <Route exact={true} path='/notification' component={Notification} />
             <Route exact={true} path='/numberinput' component={NumberInput} />
             <Route exact={true} path='/passwordinput' component={PasswordInput} />
+            <Route exact={true} path='/spinning' component={Spinning} />
             <Route exact={true} path='/tag' component={Tag} />
             <Route exact={true} path='/tags' component={Tags} />
           </Switch>

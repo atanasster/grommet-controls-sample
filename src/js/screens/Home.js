@@ -3,7 +3,7 @@ import { Box, Paragraph, RoutedButton, Heading, Chart } from 'grommet';
 import {
   MultiSelect, Tags, Tag, Notification, DropInput, MaskedInput, placeholderChars,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form,
-  TextInputField, validators,
+  TextInputField, validators, Spinning,
 } from 'grommet-controls';
 import materialUIPalette from 'grommet-controls/components/Colors/palettes/materialColors';
 
@@ -119,6 +119,9 @@ export default class Components extends Component {
                 onSelect={({ color }) => { alert(color); }}
                 colors={materialUIPalette}
               />
+            </Item>
+            <Item name='Spinning' path='/spinning' center={true}>
+              <Spinning />
             </Item>
           </Section>
           <Section align='stretch' name='Controls' index={0}>

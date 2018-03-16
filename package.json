@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "grommet": "https://github.com/grommet/grommet/tarball/NEXT-stable",
-    "grommet-controls": "^0.14.4",
+    "grommet-controls": "^0.14.5",
     "grommet-icons": "^0.15.0",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",

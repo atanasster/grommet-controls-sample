@@ -199,7 +199,7 @@ export default class Components extends Component {
           </Section>
           <Section align='stretch' name='Form' index={2}>
             <Item name='Form' path='/form' center={true}>
-              <Form onSubmit={(values) => alert(JSON.stringify(values))}>
+              <Form focusFirstChild={false} onSubmit={(values) => alert(JSON.stringify(values))}>
                 <TextInputField label='Text' name='text' validation={[validators.required(), validators.minLength(8)]} />
               </Form>
             </Item>

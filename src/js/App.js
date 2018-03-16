@@ -15,6 +15,7 @@ import Colors from './screens/Colors';
 import DateInput from './screens/DateInput';
 import DropInput from './screens/DropInput';
 import EmailInput from './screens/EmailInput';
+import Form from './screens/Form';
 import MaskedInput from './screens/MaskedInput';
 import MultiSelect from './screens/MultiSelect';
 import Notification from './screens/Notification';
@@ -98,6 +99,7 @@ export default class App extends Component {
             <Route exact={true} path='/dateinput' component={DateInput} />
             <Route exact={true} path='/dropinput' component={DropInput} />
             <Route exact={true} path='/emailinput' component={EmailInput} />
+            <Route exact={true} path='/form' component={Form} />
             <Route exact={true} path='/maskedinput' component={MaskedInput} />
             <Route exact={true} path='/multiselect' component={MultiSelect} />
             <Route exact={true} path='/notification' component={Notification} />

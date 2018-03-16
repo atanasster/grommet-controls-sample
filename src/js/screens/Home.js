@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Box, Paragraph, RoutedButton, Heading, Chart } from 'grommet';
 import {
   MultiSelect, Tags, Tag, Notification, DropInput, MaskedInput, placeholderChars,
-  DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors,
+  DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form,
+  TextInputField, validators,
 } from 'grommet-controls';
 import materialUIPalette from 'grommet-controls/components/Colors/palettes/materialColors';
 
@@ -194,6 +195,13 @@ export default class Components extends Component {
                 colors={materialUIPalette}
                 defaultValue='#ff00aa'
               />
+            </Item>
+          </Section>
+          <Section align='stretch' name='Form' index={2}>
+            <Item name='Form' path='/form' center={true}>
+              <Form onSubmit={(values) => alert(JSON.stringify(values))}>
+                <TextInputField label='Text' name='text' validation={[validators.required(), validators.minLength(8)]} />
+              </Form>
             </Item>
           </Section>
         </Box>

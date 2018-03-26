@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Box, Paragraph, RoutedButton, Heading, Chart } from 'grommet';
 import {
-  MultiSelect, Tags, Tag, Notification, DropInput, MaskedInput, placeholderChars,
-  DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form,
-  TextInputField, validators, Spinning,
+  MultiSelect, Tags, Tag, Notification, DropInput, MaskedInput,
+  DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
 } from 'grommet-controls';
+import { placeholderChars } from 'grommet-controls/components/MaskedInput';
+import { TextInputField } from 'grommet-controls/components/Form/Fields';
+import validators from 'grommet-controls/components/Form/validators';
 import materialUIPalette from 'grommet-controls/components/Colors/palettes/materialColors';
 
 import Nav from '../components/Nav';

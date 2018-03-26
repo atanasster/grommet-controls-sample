@@ -8,7 +8,13 @@
       "presets": ["react-hmre"]
     },
     "production": {
-      "plugins": ["grommet"]
+      "plugins": [
+        ["grommet"],
+        ["transform-imports", { "grommet-controls": {
+          "transform": "grommet-controls/components/${member}",
+          "preventFullImport": true }}]
+
+      ]
     }
   }
 }

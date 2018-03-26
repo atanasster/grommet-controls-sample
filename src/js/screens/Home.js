@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Box, Paragraph, RoutedButton, Heading, Chart } from 'grommet';
+import { Box, Paragraph, Heading, Chart } from 'grommet';
+import RoutedButton from 'grommet/components/Button/RoutedButton';
 import {
   MultiSelect, Tags, Tag, Notification, DropInput, MaskedInput,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,

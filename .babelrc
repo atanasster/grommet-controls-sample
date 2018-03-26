@@ -1,19 +1,16 @@
 {
   "presets": [ "env", "stage-1", "react"],
-  "plugins": [
-    "styled-components"
-  ],
   "env": {
     "development": {
       "presets": ["react-hmre"]
     },
     "production": {
       "plugins": [
-        ["grommet"],
-        ["transform-imports", { "grommet-controls": {
-          "transform": "grommet-controls/components/${member}",
-          "preventFullImport": true }}]
-
+        ["transform-imports", {
+          "grommet-controls": {"transform": "grommet-controls/components/${member}", "preventFullImport": true },
+          "grommet": {"transform": "grommet/components/${member}", "preventFullImport": true },
+          "grommet-icons": {"transform": "grommet-icons/icons/${member}", "preventFullImport": true }
+        }]
       ]
     }
   }

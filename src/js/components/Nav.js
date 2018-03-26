@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Box, Responsive, RoutedAnchor, Anchor, Text } from 'grommet';
+import { Box, Responsive, Anchor, Text } from 'grommet';
+import RoutedAnchor from 'grommet/components/Anchor/RoutedAnchor';
 import { Radial as GrommetIcon } from 'grommet-icons';
 
 export default class extends Component {

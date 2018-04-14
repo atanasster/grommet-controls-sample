@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Box, Paragraph, Heading, Chart } from 'grommet';
 import RoutedButton from 'grommet/components/Button/RoutedButton';
 import {
-  MultiSelect, Tags, Tag, Notification, DropInput, MaskedInput,
+  Select, Tags, Tag, Notification, DropInput, MaskedInput,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
 } from 'grommet-controls';
 import { placeholderChars } from 'grommet-controls/components/MaskedInput';
@@ -128,10 +128,10 @@ export default class Components extends Component {
             </Item>
           </Section>
           <Section align='stretch' name='Controls' index={0}>
-            <Item name='Multiselect' path='/multiselect' center={true}>
-              <MultiSelect
+            <Item name='Select' path='/multiselect' center={true}>
+              <Select
                 options={options}
-                onChange={({ option }) => this.setState({ selected: option })}
+                onChange={({ value }) => this.setState({ selected: value })}
                 placeholder='Multiselect'
                 multiple={true}
                 value={selected}
@@ -140,7 +140,7 @@ export default class Components extends Component {
             <Item name='Tags' path='/tags' center={true}>
               <Tags
                 value={selected}
-                onChange={({ option }) => this.setState({ selected: option })}
+                onChange={({ value }) => this.setState({ selected: value })}
                 placeholder='Multiselect'
               />
             </Item>

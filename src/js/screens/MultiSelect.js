@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Box, Select } from 'grommet';
+import { Box, Select as GrommetSelect } from 'grommet';
 import docSelect from 'grommet/components/Select/doc';
-import { MultiSelect } from 'grommet-controls';
+import { Select } from 'grommet-controls';
 import { TagsSelect } from 'grommet-controls/components/Tags';
-import doc from 'grommet-controls/components/MultiSelect/doc';
+import doc from 'grommet-controls/components/Select/doc';
 
 import Doc from '../components/Doc';
 
-const desc = doc(MultiSelect).toJSON();
-const descSelect = docSelect(Select).toJSON();
+const desc = doc(Select).toJSON();
+const descSelect = docSelect(GrommetSelect).toJSON();
+
 
 const stringOptions = ['small', 'medium', 'large', 'xlarge', 'huge'];
 const objectOptions = [{ id: 1, label: 'small' }, { id: 2, label: 'medium' }, { id: 3, label: 'large' }, { id: 4, label: 'xlarge' }, { id: 5, label: 'huge' }];
@@ -32,19 +33,18 @@ export default class SelectDoc extends Component {
             <Box direction='row'>
               <Box basis='medium' gap='small'>
 
-                <MultiSelect
+                <Select
                   options={objectOptions}
-                  value={selectedObj}
                   multiple={true}
-                  label={({ value }) => (value.reduce((c, item) => (`${c ? `${c}, ` : ''}${item.label}`), null))}
+                  value={selectedObj}
                   placeholder='Add sizes'
-                  onChange={({ option }) => this.setState({ selectedObj: option })}
-                >{ item => (
+                  onChange={({ value }) => this.setState({ selectedObj: value })}
+                >{item => (
                     <Box key={`option_${item.id}`} pad='small'>
                       {`${item.id}. ${item.label}`}
                     </Box>
                   )}
-                </MultiSelect>
+                </Select>
               </Box>
             </Box>
           }
@@ -52,12 +52,13 @@ export default class SelectDoc extends Component {
             label: (
               <Box direction='row' flex={true}>
                 <Box basis='medium'>
-                  <MultiSelect
+                  <Select
                     options={stringOptions}
-                    value={selected}
+                    selected={selected.map(str => stringOptions.indexOf(str))}
                     label={TagsSelect()}
                     multiple={true}
-                    onChange={({ option }) => this.setState({ selected: option })}
+                    value={selected}
+                    onChange={({ value }) => this.setState({ selected: value })}
                   />
                 </Box>
               </Box>

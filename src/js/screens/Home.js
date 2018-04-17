@@ -4,6 +4,7 @@ import RoutedButton from 'grommet/components/Button/RoutedButton';
 import {
   Select, Tags, Tag, Notification, DropInput, MaskedInput,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
+  ImageStamp, PagingTable,
 } from 'grommet-controls';
 import { placeholderChars } from 'grommet-controls/components/MaskedInput';
 import { TextInputField } from 'grommet-controls/components/Form/Fields';
@@ -99,6 +100,32 @@ export default class Components extends Component {
 
         <Box pad={{ horizontal: 'large' }}>
           <Section align='stretch' name='Presentation' index={0}>
+            <Item name='PagingTable' path='/paging-table'>
+              <PagingTable
+                columns={[
+                  {
+                    Header: 'Item',
+                    accessor: 'item',
+                  }, {
+                    Header: 'Qty',
+                    accessor: 'qty',
+                  }, {
+                    Header: 'Price',
+                    accessor: 'price',
+                  }, {
+                    Header: 'Total',
+                    Cell: props => (
+                      props.original.price * props.original.qty
+                    ),
+                  },
+                ]}
+                data={[
+                  { item: 'Fork', qty: 4, price: 5.50 },
+                  { item: 'Knife', qty: 3, price: 2.50 },
+                  { item: 'Spoon', qty: 2, price: 6.50 },
+                ]}
+              />
+            </Item>
             <Item name='Tag' path='/tag' center={true}>
               <Tag
                 label='Tag'
@@ -125,6 +152,9 @@ export default class Components extends Component {
             </Item>
             <Item name='Spinning' path='/spinning' center={true}>
               <Spinning />
+            </Item>
+            <Item name='ImageStamp' path='/imagestamp' center={true}>
+              <ImageStamp src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' round='full' />
             </Item>
           </Section>
           <Section align='stretch' name='Controls' index={0}>
@@ -205,7 +235,7 @@ export default class Components extends Component {
           </Section>
           <Section align='stretch' name='Form' index={2}>
             <Item name='Form' path='/form' center={true}>
-              <Form focusFirstChild={false} onSubmit={(values) => alert(JSON.stringify(values))}>
+              <Form focusFirstChild={false} onSubmit={values => alert(JSON.stringify(values))}>
                 <TextInputField label='Text' name='text' validation={[validators.required(), validators.minLength(8)]} />
               </Form>
             </Item>

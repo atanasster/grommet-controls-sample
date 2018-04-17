@@ -16,11 +16,13 @@ import DateInput from './screens/DateInput';
 import DropInput from './screens/DropInput';
 import EmailInput from './screens/EmailInput';
 import Form from './screens/Form';
+import ImageStamp from './screens/ImageStamp';
 import MaskedInput from './screens/MaskedInput';
 import MultiSelect from './screens/MultiSelect';
 import Notification from './screens/Notification';
 import Home from './screens/Home';
 import NumberInput from './screens/NumberInput';
+import PagingTable from './screens/PagingTable';
 import PasswordInput from './screens/PasswordInput';
 import Spinning from './screens/Spinning';
 import Tag from './screens/Tag';
@@ -101,10 +103,12 @@ export default class App extends Component {
             <Route exact={true} path='/dropinput' component={DropInput} />
             <Route exact={true} path='/emailinput' component={EmailInput} />
             <Route exact={true} path='/form' component={Form} />
+            <Route exact={true} path='/imagestamp' component={ImageStamp} />
             <Route exact={true} path='/maskedinput' component={MaskedInput} />
             <Route exact={true} path='/multiselect' component={MultiSelect} />
             <Route exact={true} path='/notification' component={Notification} />
             <Route exact={true} path='/numberinput' component={NumberInput} />
+            <Route exact={true} path='/paging-table' component={PagingTable} />
             <Route exact={true} path='/passwordinput' component={PasswordInput} />
             <Route exact={true} path='/spinning' component={Spinning} />
             <Route exact={true} path='/tag' component={Tag} />

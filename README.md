@@ -1,7 +1,8 @@
 # grommet-controls-sample
 
-This is a sample Grommet Controls application using Grommet 2.0 and Grommet Controls.
-
+A sample react application using [Grommet 2](https://v2.grommet.io) and 
+[Grommet Controls](https://github.com/atanasster/grommet-controls)
+ 
 To run this application, execute the following commands:
 
   1. Install NPM modules

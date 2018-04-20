@@ -12,6 +12,7 @@ import { black, material_light, material_dark, metro } from 'grommet-controls/th
 
 import ColorInput from './screens/ColorInput';
 import Colors from './screens/Colors';
+import Card from './screens/Card';
 import DateInput from './screens/DateInput';
 import DropInput from './screens/DropInput';
 import EmailInput from './screens/EmailInput';
@@ -97,6 +98,7 @@ export default class App extends Component {
         <Grommet theme={theme ? THEMES[theme] : undefined}>
           <Switch>
             <Route exact={true} path='/' component={Home} />
+            <Route exact={true} path='/card' component={Card} />
             <Route exact={true} path='/colorinput' component={ColorInput} />
             <Route exact={true} path='/colors' component={Colors} />
             <Route exact={true} path='/dateinput' component={DateInput} />

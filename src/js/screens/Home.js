@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Box, Paragraph, Heading, Chart } from 'grommet';
+import { Box, Paragraph, Heading, Chart, Image } from 'grommet';
 import RoutedButton from 'grommet/components/Button/RoutedButton';
 import {
   Select, Tags, Tag, Notification, DropInput, MaskedInput,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
-  ImageStamp, PagingTable,
+  ImageStamp, PagingTable, Card,
 } from 'grommet-controls';
 import { placeholderChars } from 'grommet-controls/components/MaskedInput';
 import { TextInputField } from 'grommet-controls/components/Form/Fields';
 import validators from 'grommet-controls/components/Form/validators';
 import materialUIPalette from 'grommet-controls/components/Colors/palettes/materialColors';
+import { CardTitle, CardContent } from 'grommet-controls/components/Card';
 
 import Nav from '../components/Nav';
 
@@ -125,6 +126,25 @@ export default class Components extends Component {
                   { item: 'Spoon', qty: 2, price: 6.50 },
                 ]}
               />
+            </Item>
+            <Item name='Card' path='/card' center={true}>
+              <Card
+                size={{ width: 'medium', height: 'small' }}
+                backContent={(
+                  <Paragraph>
+  Lorem ipsum dolor sit amet, ad usu cetero interesset. Ut vix quidam verterem, ex ius lorem dicta
+  error, ne meis referrentur vim. Eos purto noluisse adipisci te, verear feugait ad has, usu at
+  tollit ponderum disputando. Ei sed diceret interesset, eu convenire omittantur cum. Est no
+                  </Paragraph>
+                )}
+              >
+                <CardTitle border='bottom'>
+                  Card
+                </CardTitle>
+                <CardContent>
+                  <Image fit='contain' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' />
+                </CardContent>
+              </Card>
             </Item>
             <Item name='Tag' path='/tag' center={true}>
               <Tag

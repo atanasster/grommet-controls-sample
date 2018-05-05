@@ -24,6 +24,18 @@ export default class ImageStampDoc extends React.Component {
           </Box>
         }
         examples={{
+          contain: (
+            <Box gap='small'>
+              {['width', 'height', undefined].map(contain => (
+                <ImageStamp
+                  src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg'
+                  key={`contain_${contain}`}
+                  contain={contain}
+                  size='large'
+                />))
+              }
+            </Box>
+          ),
           size: (
             <Box gap='small'>
               {['small', 'medium', 'large', 'xlarge'].map(size => (
@@ -46,7 +58,6 @@ export default class ImageStampDoc extends React.Component {
               }
             </Box>
           ),
-
         }}
       />
     );

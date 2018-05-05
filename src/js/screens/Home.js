@@ -174,7 +174,11 @@ export default class Components extends Component {
               <Spinning />
             </Item>
             <Item name='ImageStamp' path='/imagestamp' center={true}>
-              <ImageStamp src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' round='full' />
+              <ImageStamp
+                src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg'
+                round='full'
+                size='large'
+              />
             </Item>
           </Section>
           <Section align='stretch' name='Controls' index={0}>

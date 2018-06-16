@@ -142,7 +142,7 @@ export default class Components extends Component {
                   Card
                 </CardTitle>
                 <CardContent>
-                  <Image fit='contain' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' />
+                  <Image fit='contain' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='120' />
                 </CardContent>
               </Card>
             </Item>

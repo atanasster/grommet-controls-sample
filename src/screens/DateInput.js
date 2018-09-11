@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box } from 'grommet';
 import { DateInput } from 'grommet-controls';
 import doc from 'grommet-controls/components/DateInput/doc';
@@ -8,7 +8,7 @@ import Doc from '../components/Doc';
 
 const desc = doc(DateInput).toJSON();
 
-export default class DateInputDoc extends Component {
+export default class DateInputDoc extends React.Component {
   state = {
     date: smallDate(new Date()), dateAuto: smallDate(new Date()), dateISO: undefined,
   };

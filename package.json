@@ -1,7 +1,7 @@
 {
   "name": "grommet-controls-sample",
   "version": "0.1.0",
-  "main": "src/js/index.js",
+  "main": "src/index.js",
   "description": "sample app using Grommet Controls with Grommet 2.0",
   "homepage": "https://grommet-nextjs.herokuapp.com",
   "bugs": "https://github.com/atanasster/grommet-controls-sample/issues",
@@ -11,19 +11,18 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development grommet pack",
-    "dev-alias": "cross-env NODE_ENV=development USE_ALIAS=true grommet pack",
-    "dist": "cross-env NODE_ENV=production grommet pack",
-    "test": "grommet check -t",
-    "test-update": "grommet check -t -- --updateSnapshot",
-    "test-watch": "grommet check -t -- --watchAll"
+    "dev": "webpack-dev-server --mode development --open",
+    "dist": "webpack --mode production",
+    "check": "npm run lint && npm run test"
   },
   "dependencies": {
+    "chart.js": "^2.7.2",
     "grommet": "https://github.com/grommet/grommet/tarball/NEXT-stable",
-    "grommet-controls": "^0.30.7",
-    "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable",
+    "grommet-controls": "^0.45.5",
+    "grommet-icons": "^3.1.0-beta.1",
     "prop-types": "^15.5.10",
     "react": "^16.4.1",
+    "react-chartjs-2": "^2.7.4",
     "react-desc": "^2.1.0",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.1.2",
@@ -33,11 +32,12 @@
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.5.2",
-    "babel-eslint": "^7.1.1",
+    "babel-eslint": "^8.2.1",
     "babel-jest": "^20.0.0",
     "babel-loader": "^7.1.1",
+    "babel-plugin-styled-components": "^1.1.7",
     "babel-plugin-transform-imports": "^1.5.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-1": "^6.24.1",
@@ -50,11 +50,12 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "grommet-cli": "^5.1.0",
     "pre-commit": "^1.2.2",
     "react-dev-utils": "^0.4.2",
     "react-test-renderer": "^16.0.0",
-    "webpack": "^3.4.1"
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.6"
   },
   "jest": {
     "collectCoverage": true,

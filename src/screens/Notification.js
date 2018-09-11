@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box } from 'grommet';
 import { Grommet, CircleQuestion } from 'grommet-icons';
 import { Notification } from 'grommet-controls';
@@ -7,7 +7,7 @@ import Doc from '../components/Doc';
 
 const desc = doc(Notification).toJSON();
 
-export default class NotificationDoc extends Component {
+export default class NotificationDoc extends React.Component {
   render() {
     const onClose = () => alert('Close clicked');
     return (

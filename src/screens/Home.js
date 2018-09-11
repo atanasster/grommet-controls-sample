@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import { Box, Paragraph, Heading, Chart, Image } from 'grommet';
-import RoutedButton from 'grommet/components/Button/RoutedButton';
+import { Box, Paragraph, Heading, Chart, Image, RoutedButton } from 'grommet';
 import {
-  Select, Tags, Tag, Notification, DropInput, MaskedInput,
+  Tags, Tag, Notification, DropInput, MaskedInput,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
-  ImageStamp, PagingTable, Card,
+  ImageStamp, PagingTable, Card, TextInputField, validators, Value,
+  materialColors, BarChart, HorizontalBarChart, LineChart, DoughnutChart, PieChart,
+  PolarChart, RadarChart, ScatterChart,
 } from 'grommet-controls';
-import { placeholderChars } from 'grommet-controls/components/MaskedInput';
-import { TextInputField } from 'grommet-controls/components/Form/Fields';
-import validators from 'grommet-controls/components/Form/validators';
-import materialUIPalette from 'grommet-controls/components/Colors/palettes/materialColors';
-import { CardTitle, CardContent } from 'grommet-controls/components/Card';
 
 import Nav from '../components/Nav';
+import { rndDatasets, rndDatasets2d } from '../utils/data';
 
 const CHART_VALUES = [
   { value: [7, 90], label: 'ninety' },
@@ -138,12 +135,12 @@ export default class Components extends Component {
                   </Paragraph>
                 )}
               >
-                <CardTitle border='bottom'>
+                <Card.CardTitle border='bottom'>
                   Card
-                </CardTitle>
-                <CardContent>
+                </Card.CardTitle>
+                <Card.CardContent>
                   <Image fit='contain' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='120' />
-                </CardContent>
+                </Card.CardContent>
               </Card>
             </Item>
             <Item name='Tag' path='/tag' center={true}>
@@ -167,7 +164,7 @@ export default class Components extends Component {
               <Colors
                 size='small'
                 onSelect={({ color }) => { alert(color); }}
-                colors={materialUIPalette}
+                colors={materialColors}
               />
             </Item>
             <Item name='Spinning' path='/spinning' center={true}>
@@ -180,17 +177,11 @@ export default class Components extends Component {
                 size='large'
               />
             </Item>
+            <Item name='Value' path='/value' center={true}>
+              <Value value='30%' label='sales last quarter' color='status-ok' />
+            </Item>
           </Section>
           <Section align='stretch' name='Controls' index={0}>
-            <Item name='Select' path='/multiselect' center={true}>
-              <Select
-                options={options}
-                onChange={({ value }) => this.setState({ selected: value })}
-                placeholder='Multiselect'
-                multiple={true}
-                value={selected}
-              />
-            </Item>
             <Item name='Tags' path='/tags' center={true}>
               <Tags
                 value={selected}
@@ -217,7 +208,7 @@ export default class Components extends Component {
             </Item>
             <Item name='MaskedInput' path='/maskedinput' center={true}>
               <MaskedInput
-                placeholderChar={placeholderChars.underscore}
+                placeholderChar='_'
                 mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                 placeholder='US Phone'
                 value={phone}
@@ -252,7 +243,7 @@ export default class Components extends Component {
             </Item>
             <Item name='ColorInput' path='/colorinput' center={true}>
               <ColorInput
-                colors={materialUIPalette}
+                colors={materialColors}
                 defaultValue='#ff00aa'
               />
             </Item>
@@ -262,6 +253,79 @@ export default class Components extends Component {
               <Form focusFirstChild={false} onSubmit={values => alert(JSON.stringify(values))}>
                 <TextInputField label='Text' name='text' validation={[validators.required(), validators.minLength(8)]} />
               </Form>
+            </Item>
+          </Section>
+          <Section align='stretch' name='Charts' index={4}>
+            <Item name='BarChart' path='/barchart' center={true}>
+              <BarChart
+                data={rndDatasets(2, { borderWidth: 1 })}
+              />
+            </Item>
+            <Item name='HorizontalBarChart' path='/horizontalbarchart' center={true}>
+              <HorizontalBarChart
+                data={rndDatasets(2, { borderWidth: 1 })}
+              />
+            </Item>
+            <Item name='LineChart' path='/linechart' center={true}>
+              <LineChart
+                data={rndDatasets(2, { fill: false })}
+              />
+            </Item>
+            <Item name='DoughnutChart' path='/doughnutchart' center={true}>
+              <DoughnutChart
+                data={rndDatasets(1)}
+                options={{
+                  legend: {
+                    display: false,
+                  },
+                  themedData: true,
+                }}
+              />
+            </Item>
+            <Item name='PieChart' path='/piechart' center={true}>
+              <PieChart
+                data={rndDatasets(1)}
+                options={{
+                  legend: {
+                    display: false,
+                  },
+                  themedData: true,
+                }}
+              />
+            </Item>
+            <Item name='PolarChart' path='/polarchart' center={true}>
+              <PolarChart
+                data={rndDatasets(1, { opacity: 0.2 }, true)}
+                options={{
+                  themedData: true,
+                  legend: {
+                    position: 'right',
+                  },
+                  scale: {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                    reverse: false,
+                  },
+                }}
+              />
+            </Item>
+            <Item name='RadarChart' path='/radarchart' center={true}>
+              <RadarChart
+                data={rndDatasets(2, { opacity: 0.2 }, true)}
+                options={{
+                  scale: {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                  },
+                }}
+              />
+            </Item>
+            <Item name='ScatterChart' path='/scatterchart' center={true}>
+              <ScatterChart
+                data={rndDatasets2d()}
+              />
             </Item>
           </Section>
         </Box>

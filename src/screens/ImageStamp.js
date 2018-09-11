@@ -58,6 +58,7 @@ export default class ImageStampDoc extends React.Component {
               }
             </Box>
           ),
+
         }}
       />
     );

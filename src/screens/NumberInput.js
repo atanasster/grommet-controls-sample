@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box } from 'grommet';
 import { AddCircle, SubtractCircle } from 'grommet-icons';
 import { NumberInput } from 'grommet-controls';
@@ -7,7 +7,7 @@ import Doc from '../components/Doc';
 
 const desc = doc(NumberInput).toJSON();
 
-export default class NumberInputDoc extends Component {
+export default class NumberInputDoc extends React.Component {
   state = {
     largeNumber: 12000.34, floatNumber: 3.5, integerNumber: 5, misedSepValue: '1000,00',
   };

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box } from 'grommet';
 import { Lock, Unlock } from 'grommet-icons';
 import { PasswordInput } from 'grommet-controls';
@@ -7,7 +7,7 @@ import Doc from '../components/Doc';
 
 const desc = doc(PasswordInput).toJSON();
 
-export default class PasswordInputDoc extends Component {
+export default class PasswordInputDoc extends React.Component {
   state = { password: 'password' };
   render() {
     const { password } = this.state;

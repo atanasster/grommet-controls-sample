@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box } from 'grommet';
 import { Github, Grommet, FormSubtract } from 'grommet-icons';
 import { Tag } from 'grommet-controls';
@@ -8,7 +8,7 @@ import Doc from '../components/Doc';
 const desc = doc(Tag).toJSON();
 const tagIcons = [<Github />, <Grommet />];
 
-export default class TagDoc extends Component {
+export default class TagDoc extends React.Component {
   state = { iconIndex: 0 };
 
   onToggle = () => {
@@ -23,7 +23,7 @@ export default class TagDoc extends Component {
         example={
           <Box gap='large'>
             <Box direction='row'>
-              <Tag />
+              <Tag label='Tag' onChange={() => alert('Closing')} />
             </Box>
           </Box>
         }
@@ -66,8 +66,8 @@ export default class TagDoc extends Component {
           round: (
             <Tag
               round='medium'
-              background='white'
-              label='border'
+              background='accent-2'
+              label='round'
             />
           ),
           onClick: (

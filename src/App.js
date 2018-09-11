@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history';
 
 import { Grommet } from 'grommet';
 // eslint-disable-next-line camelcase
-import { black, material_light, material_dark, metro } from 'grommet-controls/themes';
+import { black, materialdark, materiallight, metro } from 'grommet-controls/themes';
 
 
 import ColorInput from './screens/ColorInput';
@@ -19,7 +19,6 @@ import EmailInput from './screens/EmailInput';
 import Form from './screens/Form';
 import ImageStamp from './screens/ImageStamp';
 import MaskedInput from './screens/MaskedInput';
-import MultiSelect from './screens/MultiSelect';
 import Notification from './screens/Notification';
 import Home from './screens/Home';
 import NumberInput from './screens/NumberInput';
@@ -28,14 +27,15 @@ import PasswordInput from './screens/PasswordInput';
 import Spinning from './screens/Spinning';
 import Tag from './screens/Tag';
 import Tags from './screens/Tags';
+import Value from './screens/Value';
 
 const history = createBrowserHistory();
 
 const THEMES = {
   grommet: undefined,
   black,
-  material_light,
-  material_dark,
+  materialdark,
+  materiallight,
   metro,
 };
 
@@ -107,7 +107,6 @@ export default class App extends Component {
             <Route exact={true} path='/form' component={Form} />
             <Route exact={true} path='/imagestamp' component={ImageStamp} />
             <Route exact={true} path='/maskedinput' component={MaskedInput} />
-            <Route exact={true} path='/multiselect' component={MultiSelect} />
             <Route exact={true} path='/notification' component={Notification} />
             <Route exact={true} path='/numberinput' component={NumberInput} />
             <Route exact={true} path='/paging-table' component={PagingTable} />
@@ -115,6 +114,7 @@ export default class App extends Component {
             <Route exact={true} path='/spinning' component={Spinning} />
             <Route exact={true} path='/tag' component={Tag} />
             <Route exact={true} path='/tags' component={Tags} />
+            <Route exact={true} path='/value' component={Value} />
           </Switch>
         </Grommet>
       </Router>

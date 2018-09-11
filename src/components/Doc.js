@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Button, Heading, Paragraph, Text } from 'grommet';
-import Nav from '../components/Nav';
+import Nav from './Nav';
 
 export default class Doc extends Component {
 

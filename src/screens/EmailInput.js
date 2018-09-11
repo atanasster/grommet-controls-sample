@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box } from 'grommet';
 import { EmailInput } from 'grommet-controls';
 import doc from 'grommet-controls/components/EmailInput/doc';
@@ -6,7 +6,7 @@ import Doc from '../components/Doc';
 
 const desc = doc(EmailInput).toJSON();
 
-export default class EmailInputDoc extends Component {
+export default class EmailInputDoc extends React.Component {
   state = { email: 'john.smith@gmail.co.uk' };
   render() {
     const { email } = this.state;

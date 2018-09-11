@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box, Button } from 'grommet';
 import { FormSubtract, Trash } from 'grommet-icons';
 import { Tags } from 'grommet-controls';
@@ -10,7 +10,7 @@ const desc = doc(Tags).toJSON();
 const stringOptions = ['small', 'medium', 'large', 'xlarge', 'huge'];
 const defaultTags = [stringOptions[0], stringOptions[2]];
 
-export default class TagsDoc extends Component {
+export default class TagsDoc extends React.Component {
   state = { tags: defaultTags };
 
   onChangeTags = ({ option }) => {
@@ -34,7 +34,7 @@ export default class TagsDoc extends Component {
             <Box direction='row'>
               <Tags
                 value={tags}
-                border='small'
+                border='all'
                 basis='medium'
                 placeholder='No selection'
                 onChange={this.onChangeTags}

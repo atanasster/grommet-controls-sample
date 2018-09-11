@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box, Calendar } from 'grommet';
 import { Calendar as CalendarIcon, Add, Subtract } from 'grommet-icons';
 import { MaskedInput } from 'grommet-controls';
-import { placeholderChars, createAutoCorrectedDatePipe, createNumberMask, alphabetic, digit } from 'grommet-controls/components/MaskedInput';
 import doc from 'grommet-controls/components/MaskedInput/doc';
 import { smallDate } from 'grommet-controls/utils/moment';
 import Doc from '../components/Doc';
@@ -10,7 +9,7 @@ import Doc from '../components/Doc';
 
 const desc = doc(MaskedInput).toJSON();
 
-export default class MaskedInputDoc extends Component {
+export default class MaskedInputDoc extends React.Component {
   state = {
     phone: '8024442131',
     number: 18933.85,
@@ -38,7 +37,7 @@ export default class MaskedInputDoc extends Component {
           a11yTitle: (
             <MaskedInput
               a11yTitle='Dollars'
-              mask={createNumberMask()}
+              mask={MaskedInput.createNumberMask()}
               value={number}
               onChange={({ target: { value } }) => this.setState({ number: value })}
             />
@@ -84,7 +83,7 @@ export default class MaskedInputDoc extends Component {
           ),
           widgets: (
             <MaskedInput
-              mask={createNumberMask({ allowDecimal: true })}
+              mask={MaskedInput.createNumberMask({ allowDecimal: true })}
               value={number}
               onChange={({ target: { value } }) => this.setState({ number: value })}
               widgets={[
@@ -127,16 +126,16 @@ export default class MaskedInputDoc extends Component {
           ),
           pipe: (
             <MaskedInput
-              mask={[alphabetic, digit, alphabetic, ' ', digit, alphabetic, digit]}
+              mask={[MaskedInput.alphabetic, MaskedInput.digit, MaskedInput.alphabetic, ' ', MaskedInput.digit, MaskedInput.alphabetic, MaskedInput.digit]}
               pipe={conformedValue => ({ value: conformedValue.toUpperCase() })}
               placeholder='K1A 0B2'
-              placeholderChar={placeholderChars.underscore}
+              placeholderChar={MaskedInput.placeholderChars.underscore}
             />
           ),
           placeholderChar: (
             <MaskedInput
               mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-              placeholderChar={placeholderChars.underscore}
+              placeholderChar={MaskedInput.placeholderChars.underscore}
               value={phone}
               onChange={({ target: { value } }) => this.setState({ phone: value })}
             />
@@ -165,7 +164,7 @@ export default class MaskedInputDoc extends Component {
           name: (
             <MaskedInput
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
-              pipe={createAutoCorrectedDatePipe()}
+              pipe={MaskedInput.createAutoCorrectedDatePipe()}
               placeholder='Please enter a date'
               keepCharPositions={true}
               id='date-id'

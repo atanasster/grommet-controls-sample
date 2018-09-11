@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box, Calendar } from 'grommet';
 import { Calendar as CalendarIcon, Add, Subtract } from 'grommet-icons';
 import { DropInput } from 'grommet-controls';
@@ -9,7 +9,7 @@ import Doc from '../components/Doc';
 
 const desc = doc(DropInput).toJSON();
 
-export default class DropInputDoc extends Component {
+export default class DropInputDoc extends React.Component {
   state = {
     date: smallDate(new Date()), number: '10',
   };

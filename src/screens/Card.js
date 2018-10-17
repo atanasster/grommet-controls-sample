@@ -2,14 +2,10 @@ import React from 'react';
 import { Box, Heading, Text, Image, Paragraph, Button } from 'grommet';
 import { Bitcoin, Close, Edit, Add } from 'grommet-icons';
 import { Card, ImageStamp } from 'grommet-controls';
-import doc, { docCardActions, docCardTitle, docCardSubTitle, docCardContent } from 'grommet-controls/components/Card/doc';
+import doc from 'grommet-controls/components/Card/doc';
 import Doc from '../components/Doc';
 
 const desc = doc(Card).toJSON();
-const descCardActions = docCardActions(Card.CardActions).toJSON();
-const descCardTitle = docCardTitle(Card.CardTitle).toJSON();
-const descCardSubTitle = docCardSubTitle(Card.CardSubTitle).toJSON();
-const descCardContent = docCardContent(Card.CardContent).toJSON();
 
 const actions = [
   {
@@ -31,7 +27,6 @@ export default class CardDoc extends React.Component {
         <Doc
           name='Card'
           desc={desc}
-          footer={false}
           example={(
             <Box >
               <Card
@@ -291,81 +286,6 @@ export default class CardDoc extends React.Component {
                 <Card.CardContent>
                   <Image src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
                 </Card.CardContent>
-              </Card>
-            ),
-          }}
-        />
-        <Doc
-          name='CardTitle'
-          desc={descCardTitle}
-          nav={false}
-          footer={false}
-          examples={{
-            children: (
-              <Card>
-                <Box pad='small'>
-                  <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
-                </Box>
-                <Card.CardTitle>
-                  Card
-                </Card.CardTitle>
-              </Card>
-            ),
-          }}
-        />
-        <Doc
-          name='CardSubTitle'
-          desc={descCardSubTitle}
-          nav={false}
-          footer={false}
-          examples={{
-            children: (
-              <Card>
-                <Card.CardContent pad='small'>
-                  <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
-                </Card.CardContent>
-                <Card.CardSubTitle color='brand'>
-                  sub title
-                </Card.CardSubTitle>
-              </Card>
-            ),
-          }}
-        />
-        <Doc
-          name='CardContent'
-          desc={descCardContent}
-          nav={false}
-          footer={false}
-          examples={{
-            children: (
-              <Card>
-                <Card.CardContent pad='small'>
-                  <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
-                </Card.CardContent>
-                <Card.CardTitle>
-                  Card
-                </Card.CardTitle>
-              </Card>
-            ),
-          }}
-        />
-        <Doc
-          name='CardActions'
-          desc={descCardActions}
-          nav={false}
-          examples={{
-            children: (
-              <Card>
-                <Card.CardContent pad='small'>
-                  <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
-                </Card.CardContent>
-                <Card.CardTitle>
-                  Card
-                </Card.CardTitle>
-                <Card.CardActions justify='center'>
-                  {actions.map((action, index) => (<Button key={`actions_${index}`} label={action.label} onClick={action.onClick} />))}
-                </Card.CardActions>
-
               </Card>
             ),
           }}

@@ -4,8 +4,7 @@ import {
   Tags, Tag, Notification, DropInput, MaskedInput,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
   ImageStamp, PagingTable, Card, TextInputField, validators, Value,
-  materialColors
-} from 'grommet-controls';
+  materialColors } from 'grommet-controls';
 import { BarChart, HorizontalBarChart, LineChart, DoughnutChart, PieChart,
   PolarChart, RadarChart, ScatterChart } from 'grommet-controls/chartjs';
 

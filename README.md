@@ -22,8 +22,8 @@ To run this application, execute the following commands:
   $ npm run dist
   ```
 
-  4. Test and run linters:
+  4. Run eslint:
 
   ```
-  $ npm test
+  $ npm run check
   ```

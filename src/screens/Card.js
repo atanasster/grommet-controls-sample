@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Heading, Text, Image, Paragraph, Button } from 'grommet';
+import {
+  Box, Heading, Text, Image, Paragraph, Button,
+} from 'grommet';
 import { Bitcoin, Close, Edit, Add } from 'grommet-icons';
 import { Card, ImageStamp } from 'grommet-controls';
 import doc from 'grommet-controls/components/Card/doc';
@@ -19,7 +21,10 @@ const actions = [
   },
 ];
 export default class CardDoc extends React.Component {
-  state = { flipped: false, flippedInitial: true, flippedOnFlip: false };
+  state = {
+    flipped: false, flippedInitial: true, flippedOnFlip: false,
+  };
+
   render() {
     const { flipped, flippedInitial, flippedOnFlip } = this.state;
     return (
@@ -28,7 +33,7 @@ export default class CardDoc extends React.Component {
           name='Card'
           desc={desc}
           example={(
-            <Box >
+            <Box>
               <Card
                 backContent={(
                   <Paragraph>
@@ -67,7 +72,11 @@ export default class CardDoc extends React.Component {
           )}
           examples={{
             animation: (
-              <Card animation={{ type: 'zoomIn', duration: 5000, size: 'xlarge' }} >
+              <Card
+                animation={{
+                  type: 'zoomIn', duration: 5000, size: 'xlarge',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>
@@ -80,7 +89,12 @@ export default class CardDoc extends React.Component {
               </Card>
             ),
             background: (
-              <Card background='accent-1' size={{ width: 'medium', height: 'small' }} >
+              <Card
+                background='accent-1'
+                size={{
+                  width: 'medium', height: 'small',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>
@@ -91,7 +105,14 @@ export default class CardDoc extends React.Component {
               </Card>
             ),
             border: (
-              <Card border={{ color: 'brand', size: 'medium' }} size={{ width: 'medium', height: 'small' }}>
+              <Card
+                border={{
+                  color: 'brand', size: 'medium',
+                }}
+                size={{
+                  width: 'medium', height: 'small',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>
@@ -102,7 +123,12 @@ export default class CardDoc extends React.Component {
               </Card>
             ),
             elevation: (
-              <Card elevation='large' size={{ width: 'medium', height: 'small' }}>
+              <Card
+                elevation='large'
+                size={{
+                  width: 'medium', height: 'small',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>
@@ -121,7 +147,11 @@ export default class CardDoc extends React.Component {
                 backContent={(
                   <Box>
                     <Button
-                      onClick={() => { this.setState({ flippedInitial: false }); }}
+                      onClick={() => {
+                        this.setState({
+                          flippedInitial: false,
+                        });
+                      }}
                       icon={<Close />}
                     />
                     <Paragraph>
@@ -142,7 +172,14 @@ export default class CardDoc extends React.Component {
                   <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
                 </Card.CardContent>
                 <Card.CardActions>
-                  <Button label='Flip' onClick={() => { this.setState({ flippedInitial: true }); }} />
+                  <Button
+                    label='Flip'
+                    onClick={() => {
+                      this.setState({
+                        flippedInitial: true,
+                      });
+                    }}
+                  />
                 </Card.CardActions>
 
               </Card>
@@ -154,7 +191,11 @@ export default class CardDoc extends React.Component {
                 backContent={(
                   <Box>
                     <Button
-                      onClick={() => { this.setState({ flipped: false }); }}
+                      onClick={() => {
+                        this.setState({
+                          flipped: false,
+                        });
+                      }}
                       icon={<Close />}
                     />
                     <Paragraph>
@@ -175,7 +216,14 @@ export default class CardDoc extends React.Component {
                   <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
                 </Card.CardContent>
                 <Card.CardActions>
-                  <Button label='Flip' onClick={() => { this.setState({ flipped: true }); }} />
+                  <Button
+                    label='Flip'
+                    onClick={() => {
+                      this.setState({
+                        flipped: true,
+                      });
+                    }}
+                  />
                 </Card.CardActions>
 
               </Card>
@@ -204,7 +252,12 @@ export default class CardDoc extends React.Component {
               </Card>
             ),
             gap: (
-              <Card gap='medium' size={{ width: 'medium', height: 'small' }}>
+              <Card
+                gap='medium'
+                size={{
+                  width: 'medium', height: 'small',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>
@@ -222,7 +275,11 @@ export default class CardDoc extends React.Component {
                 backContent={(
                   <Box>
                     <Button
-                      onClick={() => { this.setState({ flippedOnFlip: false }); }}
+                      onClick={() => {
+                        this.setState({
+                          flippedOnFlip: false,
+                        });
+                      }}
                       icon={<Close />}
                     />
                     <Paragraph>
@@ -243,13 +300,25 @@ export default class CardDoc extends React.Component {
                   <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='250' />
                 </Card.CardContent>
                 <Card.CardActions>
-                  <Button label='Flip' onClick={() => { this.setState({ flippedOnFlip: true }); }} />
+                  <Button
+                    label='Flip'
+                    onClick={() => {
+                      this.setState({
+                        flippedOnFlip: true,
+                      });
+                    }}
+                  />
                 </Card.CardActions>
 
               </Card>
             ),
             pad: (
-              <Card pad='medium' size={{ width: 'medium', height: 'small' }}>
+              <Card
+                pad='medium'
+                size={{
+                  width: 'medium', height: 'small',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>
@@ -262,7 +331,12 @@ export default class CardDoc extends React.Component {
               </Card>
             ),
             round: (
-              <Card round='medium' size={{ width: 'medium', height: 'small' }}>
+              <Card
+                round='medium'
+                size={{
+                  width: 'medium', height: 'small',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>
@@ -276,7 +350,11 @@ export default class CardDoc extends React.Component {
             ),
 
             size: (
-              <Card size={{ height: 'medium', width: 'medium' }}>
+              <Card
+                size={{
+                  height: 'medium', width: 'medium',
+                }}
+              >
                 <Card.CardTitle border='bottom'>
                   Card
                 </Card.CardTitle>

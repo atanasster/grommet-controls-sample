@@ -7,13 +7,6 @@ import Doc from '../components/Doc';
 
 const desc = doc(PagingTable).toJSON();
 
-const getColumn = (columns, header) => (
-  columns.reduce((_, column) => (
-    column.columns ? getColumn(column.columns, header) : column.Header === 'header'
-
-  ), null)
-);
-
 const getAllColumns = (columns) => {
   let allColumns = [];
   columns.forEach((column) => {
@@ -28,8 +21,12 @@ const getAllColumns = (columns) => {
 
 const updateColumnShow = (allColumns, visible) => (
   allColumns.map(column => (
-    column.columns ? { ...column, columns: updateColumnShow(column.columns, visible) } :
-      { ...column, show: visible.indexOf(column.Header) !== -1 }
+    column.columns ? {
+      ...column, columns: updateColumnShow(column.columns, visible),
+    }
+      : {
+        ...column, show: visible.indexOf(column.Header) !== -1,
+      }
   ))
 );
 
@@ -95,7 +92,9 @@ export default class TableDoc extends React.Component {
             id: 'total',
             decorations: {
               cell: {
-                background: { color: 'light-1' },
+                background: {
+                  color: 'light-1',
+                },
                 align: 'end',
                 color: 'brand',
                 size: 'large',
@@ -105,7 +104,7 @@ export default class TableDoc extends React.Component {
               props.original ? props.original.price * props.original.qty : 0
             ),
             Footer: cell => (
-              <Text size='xlarge' color='brand' >{`Sum ${cell.data.reduce((a, b) => (a + b.price), 0).toFixed(2)}`}</Text>
+              <Text size='xlarge' color='brand'>{`Sum ${cell.data.reduce((a, b) => (a + b.price), 0).toFixed(2)}`}</Text>
             ),
           },
         ],
@@ -116,13 +115,13 @@ export default class TableDoc extends React.Component {
 
   onChangeFields = ({ value }) => {
     const { columns } = this.state;
-    this.setState({ columns: updateColumnShow(columns, value) });
+    this.setState({
+      columns: updateColumnShow(columns, value),
+    });
   };
 
   render() {
-    const {
-      data, grouping, sortable, filterable, paging, columns,
-    } = this.state;
+    const { data, grouping, sortable, filterable, paging, columns } = this.state;
     const allColumns = getAllColumns(columns);
     const visibleColumns = allColumns.filter(column => !(column.show === false));
     return (
@@ -133,17 +132,41 @@ export default class TableDoc extends React.Component {
           example={(
             <Box gap='small' fill='horizontal'>
               <Box direction='row' justify='between'>
-                <CheckBox checked={grouping} label='Group rows' onChange={() => this.setState({ grouping: !grouping })} />
-                <CheckBox checked={sortable} label='Sortable' onChange={() => this.setState({ sortable: !sortable })} />
-                <CheckBox checked={filterable} label='Filter' onChange={() => this.setState({ filterable: !filterable })} />
-                <CheckBox checked={paging} label='Paging' onChange={() => this.setState({ paging: !paging })} />
+                <CheckBox
+                  checked={grouping}
+                  label='Group rows'
+                  onChange={() => this.setState({
+                    grouping: !grouping,
+                  })}
+                />
+                <CheckBox
+                  checked={sortable}
+                  label='Sortable'
+                  onChange={() => this.setState({
+                    sortable: !sortable,
+                  })}
+                />
+                <CheckBox
+                  checked={filterable}
+                  label='Filter'
+                  onChange={() => this.setState({
+                    filterable: !filterable,
+                  })}
+                />
+                <CheckBox
+                  checked={paging}
+                  label='Paging'
+                  onChange={() => this.setState({
+                    paging: !paging,
+                  })}
+                />
                 <Box basis='small'>
                   <Select
                     options={allColumns.map(column => column.Header)}
                     multiple={true}
                     selected={
-                      visibleColumns.map(c =>
-                        allColumns.findIndex(column => column.Header === c.Header))
+                      visibleColumns.map(c => allColumns
+                        .findIndex(column => column.Header === c.Header))
                     }
                     value={visibleColumns.map(column => column.Header)}
                     onChange={this.onChangeFields}
@@ -159,20 +182,42 @@ export default class TableDoc extends React.Component {
                 showPagination={paging}
                 pageSizeOptions={[2, 4, 6]}
                 decorations={{
-                  table: { elevation: 'large', border: 'all' },
+                  table: {
+                    elevation: 'large', border: 'all',
+                  },
                   headerGroup: {
                     background: 'brand', border: 'horizontal', size: 'large', align: 'center',
                   },
-                  header: { border: 'all', align: 'center' },
-                  filter: { background: 'light-2', border: 'all' },
-                  filterInput: { size: 'small', placeholder: 'Filter...' },
-                  body: { animation: { type: 'fadeIn', duration: 2000, size: 'large' } },
-                  rowOdd: {
-                    background: { color: 'light-1', opacity: 'medium' },
+                  header: {
+                    border: 'all', align: 'center',
                   },
-                  footer: { background: 'accent-2' },
-                  pagination: { pad: { vertical: 'medium' } },
-                  expander: { CloseIcon: <Subtract color='brand' />, OpenIcon: <Add color='brand' /> },
+                  filter: {
+                    background: 'light-2', border: 'all',
+                  },
+                  filterInput: {
+                    size: 'small', placeholder: 'Filter...',
+                  },
+                  body: {
+                    animation: {
+                      type: 'fadeIn', duration: 2000, size: 'large',
+                    },
+                  },
+                  rowOdd: {
+                    background: {
+                      color: 'light-1', opacity: 'medium',
+                    },
+                  },
+                  footer: {
+                    background: 'accent-2',
+                  },
+                  pagination: {
+                    pad: {
+                      vertical: 'medium',
+                    },
+                  },
+                  expander: {
+                    CloseIcon: <Subtract color='brand' />, OpenIcon: <Add color='brand' />,
+                  },
                 }}
                 SubComponent={row => (
                   <Box
@@ -180,14 +225,25 @@ export default class TableDoc extends React.Component {
                     pad='small'
                     gap='medium'
                     round='medium'
-                    border={{ color: 'brand', size: 'large' }}
+                    border={{
+                      color: 'brand', size: 'large',
+                    }}
                     background='light-1'
                   >
                     <Image src={row.original.image} />
                     <Box>
-                      <div><strong>Item: </strong>{row.original.item}</div>
-                      <div><strong>Qty: </strong>{row.original.qty}</div>
-                      <div><strong>Price: </strong>{row.original.price}</div>
+                      <div>
+                        <strong>Item: </strong>
+                        {row.original.item}
+                      </div>
+                      <div>
+                        <strong>Qty: </strong>
+                        {row.original.qty}
+                      </div>
+                      <div>
+                        <strong>Price: </strong>
+                        {row.original.price}
+                      </div>
                     </Box>
                   </Box>
                 )}

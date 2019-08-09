@@ -20,27 +20,37 @@ export default class DropInputDoc extends React.Component {
       <Doc
         name='DropInput'
         desc={desc}
-        example={
+        example={(
           <Box direction='row'>
             <Box basis='medium' gap='small'>
               <DropInput
                 dropContent={(
                   <Box pad='small'>
-                    <Calendar size='small' date={date} onSelect={isoDate => this.setState({ date: smallDate(new Date(isoDate)) })} />
+                    <Calendar
+                      size='small'
+                      date={date}
+                      onSelect={isoDate => this.setState({
+                        date: smallDate(new Date(isoDate)),
+                      })}
+                    />
                   </Box>
                 )}
                 value={date}
-                onChange={({ target: { value } }) => this.setState({ date: value })}
+                onChange={({ target: { value } }) => this.setState({
+                  date: value,
+                })}
               />
             </Box>
           </Box>
-        }
+)}
         examples={{
           a11yTitle: (
             <DropInput
               a11yTitle='Birthdy date'
               value={number}
-              onChange={({ target: { value } }) => this.setState({ number: value })}
+              onChange={({ target: { value } }) => this.setState({
+                number: value,
+              })}
             />
 
           ),
@@ -49,11 +59,19 @@ export default class DropInputDoc extends React.Component {
               disabled={true}
               dropContent={(
                 <Box pad='small'>
-                  <Calendar size='small' date={date} onSelect={isoDate => this.setState({ date: smallDate(new Date(isoDate)) })} />
+                  <Calendar
+                    size='small'
+                    date={date}
+                    onSelect={isoDate => this.setState({
+                      date: smallDate(new Date(isoDate)),
+                    })}
+                  />
                 </Box>
               )}
               value={date}
-              onChange={({ target: { value } }) => this.setState({ date: value })}
+              onChange={({ target: { value } }) => this.setState({
+                date: value,
+              })}
             />
           ),
           dropContent: (
@@ -62,11 +80,19 @@ export default class DropInputDoc extends React.Component {
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
               dropContent={(
                 <Box pad='small'>
-                  <Calendar size='small' date={date} onSelect={isoDate => this.setState({ date: smallDate(new Date(isoDate)) })} />
+                  <Calendar
+                    size='small'
+                    date={date}
+                    onSelect={isoDate => this.setState({
+                      date: smallDate(new Date(isoDate)),
+                    })}
+                  />
                 </Box>
               )}
               value={date}
-              onChange={({ target: { value } }) => this.setState({ date: value })}
+              onChange={({ target: { value } }) => this.setState({
+                date: value,
+              })}
             />
           ),
           dropIcon: (
@@ -74,20 +100,40 @@ export default class DropInputDoc extends React.Component {
               dropIcon={<CalendarIcon />}
               dropContent={(
                 <Box pad='small'>
-                  <Calendar size='small' date={date} onSelect={isoDate => this.setState({ date: smallDate(new Date(isoDate)) })} />
+                  <Calendar
+                    size='small'
+                    date={date}
+                    onSelect={isoDate => this.setState({
+                      date: smallDate(new Date(isoDate)),
+                    })}
+                  />
                 </Box>
               )}
               value={date}
-              onChange={({ target: { value } }) => this.setState({ date: value })}
+              onChange={({ target: { value } }) => this.setState({
+                date: value,
+              })}
             />
           ),
           widgets: (
             <DropInput
               value={number}
-              onChange={({ target: { value } }) => this.setState({ number: parseFloat(value) })}
+              onChange={({ target: { value } }) => this.setState({
+                number: parseFloat(value),
+              })}
               widgets={[
-                { icon: <Add />, onClick: () => this.setState({ number: number + 1 }) },
-                { icon: <Subtract />, onClick: () => this.setState({ number: number - 1 }) },
+                {
+                  icon: <Add />,
+                  onClick: () => this.setState({
+                    number: number + 1,
+                  }),
+                },
+                {
+                  icon: <Subtract />,
+                  onClick: () => this.setState({
+                    number: number - 1,
+                  }),
+                },
               ]}
             />
 

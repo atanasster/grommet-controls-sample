@@ -9,24 +9,30 @@ const desc = doc(Tag).toJSON();
 const tagIcons = [<Github />, <Grommet />];
 
 export default class TagDoc extends React.Component {
-  state = { iconIndex: 0 };
+  state = {
+    iconIndex: 0,
+  };
 
   onToggle = () => {
-    this.setState({ iconIndex: 1 - this.state.iconIndex });
+    const { iconIndex } = this.state;
+    this.setState({
+      iconIndex: 1 - iconIndex,
+    });
   };
+
   render() {
     const { iconIndex } = this.state;
     return (
       <Doc
         name='Tag'
         desc={desc}
-        example={
+        example={(
           <Box gap='large'>
             <Box direction='row'>
               <Tag label='Tag' onChange={() => alert('Closing')} />
             </Box>
           </Box>
-        }
+)}
         examples={{
           a11yTitle: (
             <Tag
@@ -58,7 +64,9 @@ export default class TagDoc extends React.Component {
           ),
           border: (
             <Tag
-              border={{ side: 'all', size: 'medium', color: 'accent-1' }}
+              border={{
+                side: 'all', size: 'medium', color: 'accent-1',
+              }}
               round='medium'
               label='border'
             />

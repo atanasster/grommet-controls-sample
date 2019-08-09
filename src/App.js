@@ -69,7 +69,9 @@ export default class App extends Component {
     if (window.location.search) {
       const params = new URLSearchParams(window.location.search);
       /* eslint-disable react/no-did-mount-set-state */
-      this.setState({ theme: params.get('theme') });
+      this.setState({
+        theme: params.get('theme'),
+      });
       /* eslint-enable react/no-did-mount-set-state */
     }
   }
@@ -85,9 +87,13 @@ export default class App extends Component {
     let loc = window.location.pathname;
     if (theme !== 'grommet') {
       loc += `?theme=${theme}`;
-      this.setState({ theme }, () => history.replace(loc));
+      this.setState({
+        theme,
+      }, () => history.replace(loc));
     } else {
-      this.setState({ theme: undefined }, () => history.replace(loc));
+      this.setState({
+        theme: undefined,
+      }, () => history.replace(loc));
     }
   }
 

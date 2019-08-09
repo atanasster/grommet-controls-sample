@@ -13,13 +13,13 @@ export default class ValueDoc extends React.Component {
       <Doc
         name='Value'
         desc={desc}
-        example={
+        example={(
           <Box gap='large'>
             <Box direction='row'>
               <Value value='30%' label='last quarter sales' />
             </Box>
           </Box>
-        }
+)}
         examples={{
           label: (
             <Value

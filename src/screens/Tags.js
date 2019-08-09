@@ -11,25 +11,36 @@ const stringOptions = ['small', 'medium', 'large', 'xlarge', 'huge'];
 const defaultTags = [stringOptions[0], stringOptions[2]];
 
 export default class TagsDoc extends React.Component {
-  state = { tags: defaultTags };
+  state = {
+    tags: defaultTags,
+  };
 
   onChangeTags = ({ option }) => {
-    this.setState({ tags: option });
+    this.setState({
+      tags: option,
+    });
   };
+
   resetTags = () => {
-    this.setState({ tags: defaultTags });
+    this.setState({
+      tags: defaultTags,
+    });
   };
 
   removeTag = (tagIndex) => {
-    this.setState({ tags: this.state.tags.filter((_, index) => index !== tagIndex) });
+    const { tags } = this.state;
+    this.setState({
+      tags: tags.filter((_, index) => index !== tagIndex),
+    });
   }
+
   render() {
     const { tags } = this.state;
     return (
       <Doc
         name='Tags'
         desc={desc}
-        example={
+        example={(
           <Box gap='large'>
             <Box direction='row'>
               <Tags
@@ -44,7 +55,7 @@ export default class TagsDoc extends React.Component {
               <Button primary={true} label='Reset tags' onClick={this.resetTags} />
             </Box>
           </Box>
-        }
+)}
         examples={{
           a11yTitle: (
             <Tags
@@ -59,7 +70,12 @@ export default class TagsDoc extends React.Component {
               onChange={this.onChangeTags}
             >
               {(tag, index) => (
-                <Box key={`remove_${index}`} pad={{ horizontal: 'xsmall' }}>
+                <Box
+                  key={`remove_${index}`}
+                  pad={{
+                    horizontal: 'xsmall',
+                  }}
+                >
                   <Button label={tag} icon={<Trash />} onClick={() => this.removeTag(index)} />
                 </Box>
               )}
@@ -85,7 +101,9 @@ export default class TagsDoc extends React.Component {
               tagProps={{
                 background: 'status-critical',
                 size: 'large',
-                border: { color: 'brand', size: 'medium' },
+                border: {
+                  color: 'brand', size: 'medium',
+                },
               }}
               onChange={this.onChangeTags}
               value={tags}

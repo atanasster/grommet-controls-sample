@@ -26,7 +26,9 @@ export const rndDataset = (start, stop) => (
 );
 
 export const rndDataset2d = (start, stop) => (
-  labels.map(() => ({ x: rndRange(start, stop), y: rndRange(start, stop) }))
+  labels.map(() => ({
+    x: rndRange(start, stop), y: rndRange(start, stop),
+  }))
 );
 
 export const rndTimeSerie = (days = 150, startValue = 120) => {

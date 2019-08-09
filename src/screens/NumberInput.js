@@ -13,24 +13,24 @@ export default class NumberInputDoc extends React.Component {
   };
 
   render() {
-    const {
-      largeNumber, integerNumber, floatNumber, misedSepValue,
-    } = this.state;
+    const { largeNumber, integerNumber, floatNumber, misedSepValue } = this.state;
     return (
       <Doc
         name='NumberInput'
         desc={desc}
-        example={
+        example={(
           <Box direction='row'>
             <Box basis='medium' gap='small'>
               <NumberInput
                 value={largeNumber}
                 thousandsSeparatorSymbol=','
-                onChange={({ target: { value } }) => this.setState({ largeNumber: value })}
+                onChange={({ target: { value } }) => this.setState({
+                  largeNumber: value,
+                })}
               />
             </Box>
           </Box>
-        }
+)}
         examples={{
           a11yIncrement: (
             <NumberInput
@@ -39,14 +39,18 @@ export default class NumberInputDoc extends React.Component {
               step={10}
               a11yDecrement='Remove from entry'
               thousandsSeparatorSymbol=','
-              onChange={({ target: { value } }) => this.setState({ largeNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                largeNumber: value,
+              })}
             />
           ),
           min: (
             <NumberInput
               value={integerNumber}
               min={5}
-              onChange={({ target: { value } }) => this.setState({ integerNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                integerNumber: value,
+              })}
             />
 
           ),
@@ -54,21 +58,27 @@ export default class NumberInputDoc extends React.Component {
             <NumberInput
               value={integerNumber}
               max={5}
-              onChange={({ target: { value } }) => this.setState({ integerNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                integerNumber: value,
+              })}
             />
           ),
           step: (
             <NumberInput
               value={floatNumber}
               step={0.5}
-              onChange={({ target: { value } }) => this.setState({ floatNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                floatNumber: value,
+              })}
             />
           ),
           disabled: (
             <NumberInput
               value={integerNumber}
               disabled={true}
-              onChange={({ target: { value } }) => this.setState({ integerNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                integerNumber: value,
+              })}
             />
           ),
           addIcon: (
@@ -76,21 +86,27 @@ export default class NumberInputDoc extends React.Component {
               value={integerNumber}
               addIcon={<AddCircle />}
               subtractIcon={<SubtractCircle />}
-              onChange={({ target: { value } }) => this.setState({ integerNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                integerNumber: value,
+              })}
             />
           ),
           prefix: (
             <NumberInput
               value={integerNumber}
               prefix='$'
-              onChange={({ target: { value } }) => this.setState({ integerNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                integerNumber: value,
+              })}
             />
           ),
           suffix: (
             <NumberInput
               value={integerNumber}
               suffix=' USD'
-              onChange={({ target: { value } }) => this.setState({ integerNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                integerNumber: value,
+              })}
             />
           ),
           thousandsSeparatorSymbol: (
@@ -99,7 +115,9 @@ export default class NumberInputDoc extends React.Component {
               thousandsSeparatorSymbol=' '
               decimalSymbol=','
               updateToString={true}
-              onChange={({ target: { value } }) => this.setState({ misedSepValue: value })}
+              onChange={({ target: { value } }) => this.setState({
+                misedSepValue: value,
+              })}
             />
           ),
           decimalSymbol: (
@@ -108,21 +126,27 @@ export default class NumberInputDoc extends React.Component {
               thousandsSeparatorSymbol=''
               decimalSymbol=','
               updateToString={true}
-              onChange={({ target: { value } }) => this.setState({ misedSepValue: value })}
+              onChange={({ target: { value } }) => this.setState({
+                misedSepValue: value,
+              })}
             />
           ),
           decimals: (
             <NumberInput
               value={largeNumber}
               decimals={4}
-              onChange={({ target: { value } }) => this.setState({ largeNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                largeNumber: value,
+              })}
             />
           ),
           integers: (
             <NumberInput
               value={largeNumber}
               integers={4}
-              onChange={({ target: { value } }) => this.setState({ largeNumber: value })}
+              onChange={({ target: { value } }) => this.setState({
+                largeNumber: value,
+              })}
             />
           ),
         }}

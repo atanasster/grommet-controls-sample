@@ -4,21 +4,28 @@ import { Box, Button, Heading, Paragraph, Text } from 'grommet';
 import Nav from './Nav';
 
 export default class Doc extends Component {
-
   componentDidMount() {
     window.scrollTo(0, 0);
   }
 
   render() {
-    const {
-      children, desc, name, nav, example, examples, text,
-    } = this.props;
+    const { children, desc, name, nav, example, examples, text } = this.props;
     return (
       <Box>
-        <Box pad={{ horizontal: 'large', top: 'large' }}>
+        <Box
+          pad={{
+            horizontal: 'large', top: 'large',
+          }}
+        >
           {nav ? <Nav top={false} /> : null}
           <Box direction='row-responsive'>
-            <Box margin={{ vertical: 'large' }} basis='1/2' align='start'>
+            <Box
+              margin={{
+                vertical: 'large',
+              }}
+              basis='1/2'
+              align='start'
+            >
               <Heading level={1}>
                 <strong>{name}</strong>
               </Heading>
@@ -33,22 +40,31 @@ export default class Doc extends Component {
                 </Paragraph>
               ) : null}
               {(desc && desc.availableAt) ? (
-                <Button href={desc.availableAt.url} target='_blank' >
+                <Button href={desc.availableAt.url} target='_blank'>
                   <img alt='Example badge' src={desc.availableAt.badge} />
                 </Button>
               ) : null}
             </Box>
-            <Box flex={true} pad={{ vertical: 'large' }}>
+            <Box
+              flex={true}
+              pad={{
+                vertical: 'large',
+              }}
+            >
               {example}
             </Box>
           </Box>
         </Box>
 
         {desc ? (
-          <Box pad={{ horizontal: 'large', bottom: 'large' }}>
+          <Box
+            pad={{
+              horizontal: 'large', bottom: 'large',
+            }}
+          >
             <Box pad='large' round='large' background='light-1'>
-              {desc.properties ?
-                desc.properties.map(property => (
+              {desc.properties
+                ? desc.properties.map(property => (
                   <Box
                     key={property.name}
                     direction='row-responsive'
@@ -56,7 +72,12 @@ export default class Doc extends Component {
                     align='start'
                     border='bottom'
                   >
-                    <Box basis='1/2' margin={{ right: 'large' }}>
+                    <Box
+                      basis='1/2'
+                      margin={{
+                        right: 'large',
+                      }}
+                    >
                       <Heading level={3} size='small'>
                         <strong>{property.name}</strong>
                       </Heading>
@@ -66,13 +87,19 @@ export default class Doc extends Component {
                       <Text><pre>{property.format}</pre></Text>
                     </Box>
                     {examples[property.name] ? (
-                      <Box flex={true} align='end' margin={{ vertical: 'medium' }}>
+                      <Box
+                        flex={true}
+                        align='end'
+                        margin={{
+                          vertical: 'medium',
+                        }}
+                      >
                         {examples[property.name] || null}
                       </Box>
                     ) : null}
                   </Box>
-                )) :
-                <Text color='light-5'>No properties</Text>
+                ))
+                : <Text color='light-5'>No properties</Text>
               }
             </Box>
           </Box>

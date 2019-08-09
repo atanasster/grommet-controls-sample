@@ -1,36 +1,68 @@
 import React, { Component } from 'react';
-import { Box, Paragraph, Heading, Chart, Image, RoutedButton } from 'grommet';
+import {
+  Box, Paragraph, Heading, Chart, Image, RoutedButton,
+} from 'grommet';
 import {
   Tags, Tag, Notification, DropInput, MaskedInput,
   DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
   ImageStamp, PagingTable, Card, TextInputField, validators, Value,
-  materialColors } from 'grommet-controls';
-import { BarChart, HorizontalBarChart, LineChart, DoughnutChart, PieChart,
-  PolarChart, RadarChart, ScatterChart } from 'grommet-controls/chartjs';
+  materialColors,
+} from 'grommet-controls';
+import {
+  BarChart, HorizontalBarChart, LineChart, DoughnutChart, PieChart,
+  PolarChart, RadarChart, ScatterChart,
+} from 'grommet-controls/chartjs';
 
 import Nav from '../components/Nav';
 import { rndDatasets, rndDatasets2d } from '../utils/data';
 
 const CHART_VALUES = [
-  { value: [7, 90], label: 'ninety' },
-  { value: [6, 80], label: 'eighty' },
-  { value: [5, 60], label: 'sixty' },
-  { value: [4, 70], label: 'seventy' },
-  { value: [3, 60], label: 'sixty' },
-  { value: [2, 40], label: 'forty' },
-  { value: [1, 30], label: 'thirty' },
-  { value: [0, 10], label: 'ten' },
+  {
+    value: [7, 90], label: 'ninety',
+  },
+  {
+    value: [6, 80], label: 'eighty',
+  },
+  {
+    value: [5, 60], label: 'sixty',
+  },
+  {
+    value: [4, 70], label: 'seventy',
+  },
+  {
+    value: [3, 60], label: 'sixty',
+  },
+  {
+    value: [2, 40], label: 'forty',
+  },
+  {
+    value: [1, 30], label: 'thirty',
+  },
+  {
+    value: [0, 10], label: 'ten',
+  },
 ];
 
 const Section = ({ children, index, name }) => (
   <Box
-    pad={{ vertical: 'medium' }}
+    pad={{
+      vertical: 'medium',
+    }}
     animation={[
-      { type: 'zoomIn', duration: 500, delay: 100 + (100 * index) },
-      { type: 'fadeIn', duration: 500, delay: (100 * index) },
+      {
+        type: 'zoomIn', duration: 500, delay: 100 + (100 * index),
+      },
+      {
+        type: 'fadeIn', duration: 500, delay: (100 * index),
+      },
     ]}
   >
-    <Heading level={2} margin={{ top: 'none' }}>
+    <Heading
+      level={2}
+      margin={{
+        top: 'none',
+      }}
+    >
       {name}
     </Heading>
     <Box direction='row' wrap={true}>
@@ -39,13 +71,22 @@ const Section = ({ children, index, name }) => (
   </Box>
 );
 
-const Item = ({
-  name, path, children, center,
-}) => (
-  <Box basis='medium' margin={{ right: 'medium', bottom: 'medium' }}>
-    <RoutedButton path={path} >
+const Item = ({ name, path, children, center }) => (
+  <Box
+    basis='medium'
+    margin={{
+      right: 'medium', bottom: 'medium',
+    }}
+  >
+    <RoutedButton path={path}>
       <Box>
-        <Heading level={3} size='small' margin={{ top: 'none', bottom: 'xsmall' }}>
+        <Heading
+          level={3}
+          size='small'
+          margin={{
+            top: 'none', bottom: 'xsmall',
+          }}
+        >
           <strong>{name}</strong>
         </Heading>
       </Box>
@@ -53,11 +94,15 @@ const Item = ({
     <Box>
       <Box
         basis='small'
-        border={{ color: 'brand', size: 'medium' }}
+        border={{
+          color: 'brand', size: 'medium',
+        }}
         justify={center ? 'center' : undefined}
         align={center ? 'center' : undefined}
         pad={center ? 'medium' : undefined}
-        style={{ overflow: 'hidden' }}
+        style={{
+          overflow: 'hidden',
+        }}
       >
         {children}
       </Box>
@@ -69,23 +114,27 @@ export default class Components extends Component {
   constructor() {
     super();
     this.state = {
-      options: ['one', 'two', 'three', 'four', 'five'],
       selected: ['one', 'five'],
       date: undefined,
       phone: '3047245566',
       number: 12345.23,
     };
   }
+
   render() {
-    const {
-      options, selected, date, phone, number,
-    } = this.state;
+    const { selected, date, phone, number } = this.state;
     return (
       <Box>
         <Box pad='large'>
           <Nav />
           <Box direction='row'>
-            <Box margin={{ top: 'large' }} basis='medium' overflow='hidden'>
+            <Box
+              margin={{
+                top: 'large',
+              }}
+              basis='medium'
+              overflow='hidden'
+            >
               <Heading level={1}>
                 <strong>Grommet Controls</strong>
               </Heading>
@@ -96,7 +145,11 @@ export default class Components extends Component {
           </Box>
         </Box>
 
-        <Box pad={{ horizontal: 'large' }}>
+        <Box
+          pad={{
+            horizontal: 'large',
+          }}
+        >
           <Section align='stretch' name='Presentation' index={0}>
             <Item name='PagingTable' path='/paging-table'>
               <PagingTable
@@ -118,15 +171,23 @@ export default class Components extends Component {
                   },
                 ]}
                 data={[
-                  { item: 'Fork', qty: 4, price: 5.50 },
-                  { item: 'Knife', qty: 3, price: 2.50 },
-                  { item: 'Spoon', qty: 2, price: 6.50 },
+                  {
+                    item: 'Fork', qty: 4, price: 5.50,
+                  },
+                  {
+                    item: 'Knife', qty: 3, price: 2.50,
+                  },
+                  {
+                    item: 'Spoon', qty: 2, price: 6.50,
+                  },
                 ]}
               />
             </Item>
             <Item name='Card' path='/card' center={true}>
               <Card
-                size={{ width: 'medium', height: 'small' }}
+                size={{
+                  width: 'medium', height: 'small',
+                }}
                 backContent={(
                   <Paragraph>
   Lorem ipsum dolor sit amet, ad usu cetero interesset. Ut vix quidam verterem, ex ius lorem dicta
@@ -147,7 +208,9 @@ export default class Components extends Component {
               <Tag
                 label='Tag'
                 background='accent-1'
-                onChange={({ option }) => this.setState({ selected: option })}
+                onChange={({ option }) => this.setState({
+                  selected: option,
+                })}
               />
             </Item>
             <Item name='Notification' path='/notification' center={true}>
@@ -185,7 +248,9 @@ export default class Components extends Component {
             <Item name='Tags' path='/tags' center={true}>
               <Tags
                 value={selected}
-                onChange={({ value }) => this.setState({ selected: value })}
+                onChange={({ value }) => this.setState({
+                  selected: value,
+                })}
                 placeholder='Multiselect'
               />
             </Item>
@@ -198,11 +263,14 @@ export default class Components extends Component {
                     <Chart
                       aria-label='Chart example'
                       bounds={[[0, 7], [0, 100]]}
-                      size={{ width: 'medium', height: 'small' }}
+                      size={{
+                        width: 'medium', height: 'small',
+                      }}
                       round={true}
                       values={CHART_VALUES}
                     />
-                  </Box>)
+                  </Box>
+)
                 }
               />
             </Item>
@@ -212,7 +280,9 @@ export default class Components extends Component {
                 mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                 placeholder='US Phone'
                 value={phone}
-                onChange={({ target: { value } }) => this.setState({ phone: value })}
+                onChange={({ target: { value } }) => this.setState({
+                  phone: value,
+                })}
                 showMask={false}
               />
             </Item>
@@ -228,7 +298,9 @@ export default class Components extends Component {
               <NumberInput
                 value={number}
                 thousandsSeparatorSymbol=','
-                onChange={({ target: { value } }) => this.setState({ number: value })}
+                onChange={({ target: { value } }) => this.setState({
+                  number: value,
+                })}
               />
             </Item>
             <Item name='PasswordInput' path='/passwordinput' center={true}>
@@ -258,17 +330,23 @@ export default class Components extends Component {
           <Section align='stretch' name='Charts' index={4}>
             <Item name='BarChart' path='/barchart' center={true}>
               <BarChart
-                data={rndDatasets(2, { borderWidth: 1 })}
+                data={rndDatasets(2, {
+                  borderWidth: 1,
+                })}
               />
             </Item>
             <Item name='HorizontalBarChart' path='/horizontalbarchart' center={true}>
               <HorizontalBarChart
-                data={rndDatasets(2, { borderWidth: 1 })}
+                data={rndDatasets(2, {
+                  borderWidth: 1,
+                })}
               />
             </Item>
             <Item name='LineChart' path='/linechart' center={true}>
               <LineChart
-                data={rndDatasets(2, { fill: false })}
+                data={rndDatasets(2, {
+                  fill: false,
+                })}
               />
             </Item>
             <Item name='DoughnutChart' path='/doughnutchart' center={true}>
@@ -295,7 +373,9 @@ export default class Components extends Component {
             </Item>
             <Item name='PolarChart' path='/polarchart' center={true}>
               <PolarChart
-                data={rndDatasets(1, { opacity: 0.2 }, true)}
+                data={rndDatasets(1, {
+                  opacity: 0.2,
+                }, true)}
                 options={{
                   themedData: true,
                   legend: {
@@ -312,7 +392,9 @@ export default class Components extends Component {
             </Item>
             <Item name='RadarChart' path='/radarchart' center={true}>
               <RadarChart
-                data={rndDatasets(2, { opacity: 0.2 }, true)}
+                data={rndDatasets(2, {
+                  opacity: 0.2,
+                }, true)}
                 options={{
                   scale: {
                     ticks: {

@@ -22,24 +22,28 @@ export default class MaskedInputDoc extends React.Component {
       <Doc
         name='MaskedInput'
         desc={desc}
-        example={
+        example={(
           <Box direction='row'>
             <Box basis='medium' gap='small'>
               <MaskedInput
                 mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                 value={phone}
-                onChange={({ target: { value } }) => this.setState({ phone: value })}
+                onChange={({ target: { value } }) => this.setState({
+                  phone: value,
+                })}
               />
             </Box>
           </Box>
-        }
+)}
         examples={{
           a11yTitle: (
             <MaskedInput
               a11yTitle='Dollars'
               mask={MaskedInput.createNumberMask()}
               value={number}
-              onChange={({ target: { value } }) => this.setState({ number: value })}
+              onChange={({ target: { value } }) => this.setState({
+                number: value,
+              })}
             />
 
           ),
@@ -49,11 +53,19 @@ export default class MaskedInputDoc extends React.Component {
               disabled={true}
               dropContent={(
                 <Box pad='small'>
-                  <Calendar size='small' date={date} onSelect={isoDate => this.setState({ date: smallDate(new Date(isoDate)) })} />
+                  <Calendar
+                    size='small'
+                    date={date}
+                    onSelect={isoDate => this.setState({
+                      date: smallDate(new Date(isoDate)),
+                    })}
+                  />
                 </Box>
               )}
               value={date}
-              onChange={({ target: { value } }) => this.setState({ date: value })}
+              onChange={({ target: { value } }) => this.setState({
+                date: value,
+              })}
             />
           ),
           dropContent: (
@@ -61,11 +73,19 @@ export default class MaskedInputDoc extends React.Component {
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
               dropContent={(
                 <Box pad='small'>
-                  <Calendar size='small' date={date} onSelect={isoDate => this.setState({ date: smallDate(new Date(isoDate)) })} />
+                  <Calendar
+                    size='small'
+                    date={date}
+                    onSelect={isoDate => this.setState({
+                      date: smallDate(new Date(isoDate)),
+                    })}
+                  />
                 </Box>
               )}
               value={date}
-              onChange={({ target: { value } }) => this.setState({ date: value })}
+              onChange={({ target: { value } }) => this.setState({
+                date: value,
+              })}
             />
           ),
           dropIcon: (
@@ -74,21 +94,43 @@ export default class MaskedInputDoc extends React.Component {
               dropIcon={<CalendarIcon />}
               dropContent={(
                 <Box pad='small'>
-                  <Calendar size='small' date={date} onSelect={isoDate => this.setState({ date: smallDate(new Date(isoDate)) })} />
+                  <Calendar
+                    size='small'
+                    date={date}
+                    onSelect={isoDate => this.setState({
+                      date: smallDate(new Date(isoDate)),
+                    })}
+                  />
                 </Box>
               )}
               value={date}
-              onChange={({ target: { value } }) => this.setState({ date: value })}
+              onChange={({ target: { value } }) => this.setState({
+                date: value,
+              })}
             />
           ),
           widgets: (
             <MaskedInput
-              mask={MaskedInput.createNumberMask({ allowDecimal: true })}
+              mask={MaskedInput.createNumberMask({
+                allowDecimal: true,
+              })}
               value={number}
-              onChange={({ target: { value } }) => this.setState({ number: value })}
+              onChange={({ target: { value } }) => this.setState({
+                number: value,
+              })}
               widgets={[
-                { icon: <Add />, onClick: () => this.setState({ number: number + 1 }) },
-                { icon: <Subtract />, onClick: () => this.setState({ number: number - 1 }) },
+                {
+                  icon: <Add />,
+                  onClick: () => this.setState({
+                    number: number + 1,
+                  }),
+                },
+                {
+                  icon: <Subtract />,
+                  onClick: () => this.setState({
+                    number: number - 1,
+                  }),
+                },
               ]}
             />
 
@@ -98,7 +140,9 @@ export default class MaskedInputDoc extends React.Component {
               mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
               plain={true}
               value={phone}
-              onChange={({ target: { value } }) => this.setState({ phone: value })}
+              onChange={({ target: { value } }) => this.setState({
+                phone: value,
+              })}
             />
           ),
           focusIndicator: (
@@ -107,7 +151,9 @@ export default class MaskedInputDoc extends React.Component {
               plain={true}
               focusIndicator={true}
               value={phone}
-              onChange={({ target: { value } }) => this.setState({ phone: value })}
+              onChange={({ target: { value } }) => this.setState({
+                phone: value,
+              })}
             />
           ),
           mask: (
@@ -121,13 +167,17 @@ export default class MaskedInputDoc extends React.Component {
               mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
               guide={false}
               value={phone}
-              onChange={({ target: { value } }) => this.setState({ phone: value })}
+              onChange={({ target: { value } }) => this.setState({
+                phone: value,
+              })}
             />
           ),
           pipe: (
             <MaskedInput
               mask={[MaskedInput.alphabetic, MaskedInput.digit, MaskedInput.alphabetic, ' ', MaskedInput.digit, MaskedInput.alphabetic, MaskedInput.digit]}
-              pipe={conformedValue => ({ value: conformedValue.toUpperCase() })}
+              pipe={conformedValue => ({
+                value: conformedValue.toUpperCase(),
+              })}
               placeholder='K1A 0B2'
               placeholderChar={MaskedInput.placeholderChars.underscore}
             />
@@ -137,7 +187,9 @@ export default class MaskedInputDoc extends React.Component {
               mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
               placeholderChar={MaskedInput.placeholderChars.underscore}
               value={phone}
-              onChange={({ target: { value } }) => this.setState({ phone: value })}
+              onChange={({ target: { value } }) => this.setState({
+                phone: value,
+              })}
             />
 
           ),
@@ -145,7 +197,9 @@ export default class MaskedInputDoc extends React.Component {
             <MaskedInput
               mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
               value={phone}
-              onChange={({ target: { value } }) => this.setState({ phone: value })}
+              onChange={({ target: { value } }) => this.setState({
+                phone: value,
+              })}
               keepCharPositions={true}
             />
           ),

@@ -12,7 +12,7 @@ export default class ImageStampDoc extends React.Component {
       <Doc
         name='ImageStamp'
         desc={desc}
-        example={
+        example={(
           <Box direction='row'>
             <Box basis='medium'>
               <ImageStamp
@@ -22,7 +22,7 @@ export default class ImageStampDoc extends React.Component {
               />
             </Box>
           </Box>
-        }
+)}
         examples={{
           contain: (
             <Box gap='small'>
@@ -32,7 +32,8 @@ export default class ImageStampDoc extends React.Component {
                   key={`contain_${contain}`}
                   contain={contain}
                   size='large'
-                />))
+                />
+              ))
               }
             </Box>
           ),
@@ -43,7 +44,8 @@ export default class ImageStampDoc extends React.Component {
                   src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg'
                   key={`size_${size}`}
                   size={size}
-                />))
+                />
+              ))
               }
             </Box>
           ),
@@ -54,7 +56,8 @@ export default class ImageStampDoc extends React.Component {
                   src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg'
                   key={`round_${round}`}
                   round={round}
-                />))
+                />
+              ))
               }
             </Box>
           ),

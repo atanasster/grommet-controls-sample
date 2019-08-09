@@ -73,7 +73,7 @@ export default class ColorsDoc extends React.Component {
       <Doc
         name='Colors'
         desc={desc}
-        example={
+        example={(
           <Box direction='row'>
             <Box basis='medium'>
               <Colors
@@ -83,7 +83,7 @@ export default class ColorsDoc extends React.Component {
               />
             </Box>
           </Box>
-        }
+)}
         examples={{
           colors: (
             <Colors

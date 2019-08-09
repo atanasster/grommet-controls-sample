@@ -14,11 +14,13 @@ export default class NotificationDoc extends React.Component {
       <Doc
         name='Grommet Notification'
         desc={desc}
-        example={
+        example={(
           <Box gap='large'>
             <Box direction='row'>
               <Notification
-                border={{ side: 'all', color: 'brand', size: 'medium' }}
+                border={{
+                  side: 'all', color: 'brand', size: 'medium',
+                }}
                 message='Message heading'
                 state='state label'
                 timestamp={new Date()}
@@ -29,7 +31,7 @@ export default class NotificationDoc extends React.Component {
               />
             </Box>
           </Box>
-        }
+)}
         examples={{
           a11yTitle: (
             <Notification

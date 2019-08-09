@@ -1,6 +1,9 @@
 import React from 'react';
 import { Box, Button, Text } from 'grommet';
-import { Form, TextInputField, PasswordInputField, SelectField, CheckBoxField, NumberInputField, validators } from 'grommet-controls';
+import {
+  Form, TextInputField, PasswordInputField, SelectField, CheckBoxField,
+  NumberInputField, validators,
+} from 'grommet-controls';
 import doc from 'grommet-controls/components/Form/doc';
 import Doc from '../components/Doc';
 
@@ -11,15 +14,21 @@ export default class FormDoc extends React.Component {
     changedValue: '',
     invalid: false,
   }
+
   render() {
     const { changedValue, invalid } = this.state;
     return (
       <Doc
         name='Form'
         desc={desc}
-        example={
+        example={(
           <Box direction='row' fill='horizontal'>
-            <Form onSubmit={values => alert(JSON.stringify(values))} pad={{ horizontal: 'small' }} >
+            <Form
+              onSubmit={values => alert(JSON.stringify(values))}
+              pad={{
+                horizontal: 'small',
+              }}
+            >
               <PasswordInputField label='Password' name='password' validation={[validators.required(), validators.minLength(8), validators.alphaNumeric()]} />
               <PasswordInputField label='Confirm Password' name='password1' validation={[validators.equalsField('password', 'the above password')]} />
               <TextInputField label='URL' name='url' validation={[validators.required(), validators.url()]} />
@@ -31,20 +40,22 @@ export default class FormDoc extends React.Component {
               </Box>
             </Form>
           </Box>
-        }
+)}
         examples={{
           onSubmit: (
-            <Box pad='small' >
+            <Box pad='small'>
               <Form focusFirstChild={false} onSubmit={values => alert(JSON.stringify(values))} basis='small'>
                 <TextInputField label='Text' name='fieldname' />
               </Form>
             </Box>
           ),
           onChange: (
-            <Box pad='small' >
+            <Box pad='small'>
               <Form
                 focusFirstChild={false}
-                onChange={({ target: { value } }) => this.setState({ changedValue: value })}
+                onChange={({ target: { value } }) => this.setState({
+                  changedValue: value,
+                })}
                 basis='small'
               >
                 <TextInputField label='Text' name='onchange' />
@@ -55,7 +66,7 @@ export default class FormDoc extends React.Component {
             </Box>
           ),
           onSubmitError: (
-            <Box pad='small' >
+            <Box pad='small'>
               <Form
                 focusFirstChild={false}
                 onSubmit={values => alert(JSON.stringify(values))}
@@ -67,11 +78,13 @@ export default class FormDoc extends React.Component {
             </Box>
           ),
           onInvalidForm: (
-            <Box pad='small' >
+            <Box pad='small'>
               <Form
                 focusFirstChild={false}
                 onSubmit={values => alert(JSON.stringify(values))}
-                onInvalidForm={error => this.setState({ invalid: error })}
+                onInvalidForm={error => this.setState({
+                  invalid: error,
+                })}
                 basis='small'
               >
                 <TextInputField label='Text' name='invalidfield' validation={[validators.required(), validators.minLength(8)]} />

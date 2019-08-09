@@ -10,7 +10,9 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new CopyWebpackPlugin([{ from: './public' }]),
+    new CopyWebpackPlugin([{
+      from: './public',
+    }]),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {

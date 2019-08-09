@@ -8,23 +8,28 @@ import Doc from '../components/Doc';
 const desc = doc(PasswordInput).toJSON();
 
 export default class PasswordInputDoc extends React.Component {
-  state = { password: 'password' };
+  state = {
+    password: 'password',
+  };
+
   render() {
     const { password } = this.state;
     return (
       <Doc
         name='PasswordInput'
         desc={desc}
-        example={
+        example={(
           <Box direction='row'>
             <Box basis='medium'>
               <PasswordInput
                 value={password}
-                onChange={({ target: { value } }) => this.setState({ password: value })}
+                onChange={({ target: { value } }) => this.setState({
+                  password: value,
+                })}
               />
             </Box>
           </Box>
-        }
+)}
         examples={{
           viewIcon: (
             <PasswordInput
@@ -32,7 +37,9 @@ export default class PasswordInputDoc extends React.Component {
               hideIcon={<Lock />}
               a11yTitle='enter password'
               value={password}
-              onChange={({ target: { value } }) => this.setState({ password: value })}
+              onChange={({ target: { value } }) => this.setState({
+                password: value,
+              })}
             />
           ),
         }}

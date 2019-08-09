@@ -12,11 +12,11 @@ export default class SpinningDoc extends React.Component {
       <Doc
         name='Spinning'
         desc={desc}
-        example={
-          <Box >
+        example={(
+          <Box>
             <Spinning />
           </Box>
-        }
+)}
         examples={{
           kind: (
             <Box gap='medium'>

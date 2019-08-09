@@ -10,12 +10,24 @@ export default class extends Component {
         {size => (
           <Box direction='row' justify='between' align='center'>
             <RoutedAnchor path='/'>
-              <Box direction='row' align='center' margin={{ right: 'small' }}>
+              <Box
+                direction='row'
+                align='center'
+                margin={{
+                  right: 'small',
+                }}
+              >
                 <GrommetIcon color='brand' />
-                {size !== 'narrow' ?
-                  <Box margin={{ horizontal: 'small' }}>
-                    <Text>grommet-controls</Text>
-                  </Box>
+                {size !== 'narrow'
+                  ? (
+                    <Box
+                      margin={{
+                        horizontal: 'small',
+                      }}
+                    >
+                      <Text>grommet-controls</Text>
+                    </Box>
+                  )
                   : null}
               </Box>
             </RoutedAnchor>

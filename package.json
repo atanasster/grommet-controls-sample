@@ -13,18 +13,20 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
     "dist": "webpack --mode production",
-    "check": "./node_modules/.bin/eslint ."
+    "check": "./node_modules/.bin/eslint .",
+    "pub": "pushd ./ && npm run build && cd dist && npm publish && popd"
   },
   "dependencies": {
     "chart.js": "^2.8.0",
     "grommet": "^2.7.3",
-    "grommet-controls": "^1.1.20",
+    "grommet-controls": "^2.0.0-alpha1",
     "grommet-icons": "^4.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.9.0",
     "react-chartjs-2": "^2.7.4",
     "react-desc": "^4.1.2",
     "react-dom": "^16.9.0",
+    "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "styled-components": "^4.3.2",
     "url-search-params": "^0.10.0"
@@ -32,12 +34,12 @@
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
-    "babel-eslint": "^10.0.2",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-styled-components": "^1.10.6",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.6",
     "copy-webpack-plugin": "^5.0.4",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",

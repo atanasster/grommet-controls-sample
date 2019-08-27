@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
 import {
-  Box, Paragraph, Heading, Chart, Image, RoutedButton,
+  Box, Paragraph, Heading, Chart, Button, Image,
 } from 'grommet';
+import { Favorite } from 'grommet-icons';
 import {
-  Tags, Tag, Notification, DropInput, MaskedInput,
-  DateInput, NumberInput, PasswordInput, EmailInput, ColorInput, Colors, Form, Spinning,
-  ImageStamp, PagingTable, Card, TextInputField, validators, Value,
+  Avatar,
+  Card,
+  DropInput,
+  ImageStamp,
+  MaskedInput,
+  NumberInput,
+  PagingTable,
+  Spinning,
+  Form,
+  TextInputField,
+  validators,
+  CheckBoxField,
+  Colors,
   materialColors,
+  ColorInput,
+  IconButton,
+  Notification,
+  Tag,
+  Value,
+  DateInput,
+  EmailInput,
+  PasswordInput,
+  Tags,
+  uiColors,
+  ColorInputField,
 } from 'grommet-controls';
-import {
-  BarChart, HorizontalBarChart, LineChart, DoughnutChart, PieChart,
-  PolarChart, RadarChart, ScatterChart,
-} from 'grommet-controls/chartjs';
 
-import Nav from '../components/Nav';
-import { rndDatasets, rndDatasets2d } from '../utils/data';
+import { RoutedButton } from '../components/RoutedLinks';
+import SideMenu from '../components/SideMenu';
 
 const CHART_VALUES = [
   {
@@ -71,7 +89,23 @@ const Section = ({ children, index, name }) => (
   </Box>
 );
 
-const Item = ({ name, path, children, center }) => (
+const FormItem = ({ name, path, children }) => (
+  <Item name={name} path={path}>
+    <Form
+      onSubmit={values => alert(JSON.stringify(values))}
+      pad={{
+        horizontal: 'small',
+      }}
+      focusFirstChild={false}
+    >
+      {children}
+      <Box pad='small'>
+        <Button type='submit' label='Submit' />
+      </Box>
+    </Form>
+  </Item>
+);
+const Item = ({ name, path, children }) => (
   <Box
     basis='medium'
     margin={{
@@ -97,9 +131,9 @@ const Item = ({ name, path, children, center }) => (
         border={{
           color: 'brand', size: 'medium',
         }}
-        justify={center ? 'center' : undefined}
-        align={center ? 'center' : undefined}
-        pad={center ? 'medium' : undefined}
+        justify='center'
+        align='center'
+        pad='medium'
         style={{
           overflow: 'hidden',
         }}
@@ -124,292 +158,245 @@ export default class Components extends Component {
   render() {
     const { selected, date, phone, number } = this.state;
     return (
-      <Box>
-        <Box pad='large'>
-          <Nav />
-          <Box direction='row'>
-            <Box
-              margin={{
-                top: 'large',
-              }}
-              basis='medium'
-              overflow='hidden'
-            >
-              <Heading level={1}>
-                <strong>Grommet Controls</strong>
-              </Heading>
-              <Paragraph size='large' margin='none'>
-                Extensions for Grommet 2.0.
-              </Paragraph>
+      <Box direction='row'>
+        <SideMenu
+          width='small'
+          title='Inbox'
+          items={[
+            {
+              id: 'local',
+              path: '/tables',
+              label: 'Local',
+            },
+            {
+              id: 'graphql',
+              path: '/table_graphql',
+              label: 'GraphQL',
+            },
+          ]}
+        />
+        <Box>
+          <Box pad='large'>
+            <Box direction='row'>
+              <Box
+                margin={{
+                  top: 'large',
+                }}
+                basis='medium'
+                overflow='hidden'
+              >
+                <Heading level={1}>
+                  <strong>grommet-controls</strong>
+                </Heading>
+                <Paragraph size='large' margin='none'>
+                  Extensions for Grommet 2+
+                </Paragraph>
+              </Box>
             </Box>
           </Box>
-        </Box>
 
-        <Box
-          pad={{
-            horizontal: 'large',
-          }}
-        >
-          <Section align='stretch' name='Presentation' index={0}>
-            <Item name='PagingTable' path='/paging-table'>
-              <PagingTable
-                columns={[
-                  {
-                    Header: 'Item',
-                    accessor: 'item',
-                  }, {
-                    Header: 'Qty',
-                    accessor: 'qty',
-                  }, {
-                    Header: 'Price',
-                    accessor: 'price',
-                  }, {
-                    Header: 'Total',
-                    Cell: props => (
-                      props.original.price * props.original.qty
-                    ),
-                  },
-                ]}
-                data={[
-                  {
-                    item: 'Fork', qty: 4, price: 5.50,
-                  },
-                  {
-                    item: 'Knife', qty: 3, price: 2.50,
-                  },
-                  {
-                    item: 'Spoon', qty: 2, price: 6.50,
-                  },
-                ]}
-              />
-            </Item>
-            <Item name='Card' path='/card' center={true}>
-              <Card
-                size={{
-                  width: 'medium', height: 'small',
-                }}
-                backContent={(
-                  <Paragraph>
-  Lorem ipsum dolor sit amet, ad usu cetero interesset. Ut vix quidam verterem, ex ius lorem dicta
-  error, ne meis referrentur vim. Eos purto noluisse adipisci te, verear feugait ad has, usu at
-  tollit ponderum disputando. Ei sed diceret interesset, eu convenire omittantur cum. Est no
-                  </Paragraph>
-                )}
-              >
-                <Card.CardTitle border='bottom'>
-                  Card
-                </Card.CardTitle>
-                <Card.CardContent>
-                  <Image fit='contain' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='120' />
-                </Card.CardContent>
-              </Card>
-            </Item>
-            <Item name='Tag' path='/tag' center={true}>
-              <Tag
-                label='Tag'
-                background='accent-1'
-                onChange={({ option }) => this.setState({
-                  selected: option,
-                })}
-              />
-            </Item>
-            <Item name='Notification' path='/notification' center={true}>
-              <Notification
-                message='Notification'
-                onClose={() => {}}
-                timestamp={new Date()}
-                percentComplete={30}
-                strong={true}
-                status='warning'
-              />
-            </Item>
-            <Item name='Colors' path='/colors' center={true}>
-              <Colors
-                size='small'
-                onSelect={({ color }) => { alert(color); }}
-                colors={materialColors}
-              />
-            </Item>
-            <Item name='Spinning' path='/spinning' center={true}>
-              <Spinning />
-            </Item>
-            <Item name='ImageStamp' path='/imagestamp' center={true}>
-              <ImageStamp
-                src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg'
-                round='full'
-                size='large'
-              />
-            </Item>
-            <Item name='Value' path='/value' center={true}>
-              <Value value='30%' label='sales last quarter' color='status-ok' />
-            </Item>
-          </Section>
-          <Section align='stretch' name='Controls' index={0}>
-            <Item name='Tags' path='/tags' center={true}>
-              <Tags
-                value={selected}
-                onChange={({ value }) => this.setState({
-                  selected: value,
-                })}
-                placeholder='Multiselect'
-              />
-            </Item>
-            <Item name='DropInput' path='/dropinput' center={true}>
-              <DropInput
-                placeholder='annual sales'
-                dropContent={(
-                  <Box pad='small' align='center' gap='small'>
-                    <Heading margin='none' level={3}>Monthly sales</Heading>
-                    <Chart
-                      aria-label='Chart example'
-                      bounds={[[0, 7], [0, 100]]}
-                      size={{
-                        width: 'medium', height: 'small',
-                      }}
-                      round={true}
-                      values={CHART_VALUES}
-                    />
-                  </Box>
-)
-                }
-              />
-            </Item>
-            <Item name='MaskedInput' path='/maskedinput' center={true}>
-              <MaskedInput
-                placeholderChar='_'
-                mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-                placeholder='US Phone'
-                value={phone}
-                onChange={({ target: { value } }) => this.setState({
-                  phone: value,
-                })}
-                showMask={false}
-              />
-            </Item>
+          <Box
+            pad={{
+              horizontal: 'large',
+            }}
+          >
+            <Section align='stretch' name='Controls' index={1}>
+              <Item name='Avatar' path='/Avatar'>
+                <Avatar
+                  image='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg'
+                  title='Adam Smith'
+                  subTitle='admin'
+                />
+              </Item>
+              <Item name='Card' path='/Card'>
+                <Card
+                  size={{
+                    width: 'medium', height: 'small',
+                  }}
+                >
+                  <Card.CardTitle border='bottom'>
+                    Card
+                  </Card.CardTitle>
+                  <Card.CardContent>
+                    <Image fit='contain' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' height='120' />
+                  </Card.CardContent>
+                </Card>
+              </Item>
+              <Item name='Colors' path='/Colors' center={true}>
+                <Colors
+                  size='small'
+                  onSelect={({ color }) => { alert(color); }}
+                  colors={materialColors}
+                />
+              </Item>
+              <Item name='IconButton' path='/IconButton'>
+                <IconButton
+                  icon={<Favorite />}
+                  onClick={() => alert('Clicked')}
+                />
+              </Item>
 
-            <Item name='DateInput' path='/dateinput' center={true}>
-              <DateInput
-                defaultValue={date}
-                placeholder='DD/MM/YYYY'
-                onChange={({ target: { value } }) => alert(value)}
-              />
-            </Item>
-            <Item name='NumberInput' path='/numberinput' center={true}>
-              <NumberInput
-                value={number}
-                thousandsSeparatorSymbol=','
-                onChange={({ target: { value } }) => this.setState({
-                  number: value,
-                })}
-              />
-            </Item>
-            <Item name='PasswordInput' path='/passwordinput' center={true}>
-              <PasswordInput
-                defaultValue='password'
-              />
-            </Item>
-            <Item name='EmailInput' path='/emailinput' center={true}>
-              <EmailInput
-                defaultValue='john.smith@gmail.co.uk'
-              />
-            </Item>
-            <Item name='ColorInput' path='/colorinput' center={true}>
-              <ColorInput
-                colors={materialColors}
-                defaultValue='#ff00aa'
-              />
-            </Item>
-          </Section>
-          <Section align='stretch' name='Form' index={2}>
-            <Item name='Form' path='/form' center={true}>
-              <Form focusFirstChild={false} onSubmit={values => alert(JSON.stringify(values))}>
+              <Item name='ImageStamp' path='/ImageStamp'>
+                <ImageStamp
+                  src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg'
+                  round='full'
+                  size='large'
+                />
+              </Item>
+              <Item name='Notification' path='/Notification'>
+                <Notification
+                  border={{
+                    side: 'all', color: 'brand', size: 'medium',
+                  }}
+                  message='Message heading'
+                  state='state label'
+                  timestamp={new Date()}
+                  strong={true}
+                  percentComplete={30}
+                  status='ok'
+                  onClose={() => alert('closing...')}
+                />
+              </Item>
+              <Item name='PagingTable' path='/PagingTable'>
+                <PagingTable
+                  columns={[
+                    {
+                      Header: 'Item',
+                      accessor: 'item',
+                    }, {
+                      Header: 'Qty',
+                      accessor: 'qty',
+                    }, {
+                      Header: 'Price',
+                      accessor: 'price',
+                    }, {
+                      Header: 'Total',
+                      Cell: props => (
+                        props.original.price * props.original.qty
+                      ),
+                    },
+                  ]}
+                  data={[
+                    {
+                      item: 'Fork', qty: 4, price: 5.50,
+                    },
+                    {
+                      item: 'Knife', qty: 3, price: 2.50,
+                    },
+                    {
+                      item: 'Spoon', qty: 2, price: 6.50,
+                    },
+                  ]}
+                />
+              </Item>
+              <Item name='Spinning' path='/Spinning'>
+                <Spinning />
+              </Item>
+              <Item name='Tag' path='/Tag'>
+                <Tag label='Tag' onChange={() => alert('Closing')} />
+              </Item>
+              <Item name='Value' path='/Value'>
+                <Value value='30%' label='last quarter sales' />
+              </Item>
+            </Section>
+            <Section align='stretch' name='Input' index={2}>
+              <Item name='ColorInput' path='/ColorInput'>
+                <ColorInput
+                  colors={materialColors}
+                  defaultValue='#ff00aa'
+                />
+              </Item>
+              <Item name='DateInput' path='/DateInput'>
+                <DateInput
+                  value={date}
+                  onChange={({ target: { value } }) => this.setState({
+                    date: value,
+                  })}
+                />
+
+              </Item>
+
+              <Item name='DropInput' path='/DropInput'>
+                <DropInput
+                  placeholder='annual sales'
+                  dropContent={(
+                    <Box pad='small' align='center' gap='small'>
+                      <Heading margin='none' level={3}>Monthly sales</Heading>
+                      <Chart
+                        aria-label='Chart example'
+                        bounds={[[0, 7], [0, 100]]}
+                        size={{
+                          width: 'medium', height: 'small',
+                        }}
+                        round={true}
+                        values={CHART_VALUES}
+                      />
+                    </Box>
+                  )}
+                />
+              </Item>
+              <Item name='EmailInput' path='/EmailInput'>
+                <EmailInput
+                  defaultValue='john.smith@gmail.co.uk'
+                />
+              </Item>
+              <Item name='MaskedInput' path='/MaskedInput'>
+                <MaskedInput
+                  placeholderChar='_'
+                  mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                  placeholder='US Phone'
+                  value={phone}
+                  onChange={({ target: { value } }) => this.setState({
+                    phone: value,
+                  })}
+                  showMask={false}
+                />
+              </Item>
+              <Item name='NumberInput' path='/NumberInput'>
+                <NumberInput
+                  value={number}
+                  thousandsSeparatorSymbol=','
+                  onChange={({ target: { value } }) => this.setState({
+                    number: value,
+                  })}
+                />
+              </Item>
+              <Item name='PasswordInput' path='/PasswordInput' center={true}>
+                <PasswordInput
+                  defaultValue='password'
+                />
+              </Item>
+              <Item name='Tags' path='/Tags' center={true}>
+                <Tags
+                  value={selected}
+                  onChange={({ value }) => this.setState({
+                    selected: value,
+                  })}
+                  placeholder='Multiselect'
+                />
+              </Item>
+            </Section>
+            <Section align='stretch' name='Validation' index={3}>
+              <FormItem name='CheckBoxField' path='/ChecBboxField'>
+                <CheckBoxField
+                  name='tos'
+                  label='Terms of service'
+                  validation={[validators.required(), validators.True('Please accept the TOS')]}
+                />
+              </FormItem>
+              <FormItem name='ColorInputField' path='/ColorInputField'>
+                <ColorInputField
+                  name='color'
+                  colors={uiColors}
+                  label='Color'
+                  validation={[validators.required()]}
+                />
+              </FormItem>
+              <FormItem name='Form' path='/Form'>
                 <TextInputField label='Text' name='text' validation={[validators.required(), validators.minLength(8)]} />
-              </Form>
-            </Item>
-          </Section>
-          <Section align='stretch' name='Charts' index={4}>
-            <Item name='BarChart' path='/barchart' center={true}>
-              <BarChart
-                data={rndDatasets(2, {
-                  borderWidth: 1,
-                })}
-              />
-            </Item>
-            <Item name='HorizontalBarChart' path='/horizontalbarchart' center={true}>
-              <HorizontalBarChart
-                data={rndDatasets(2, {
-                  borderWidth: 1,
-                })}
-              />
-            </Item>
-            <Item name='LineChart' path='/linechart' center={true}>
-              <LineChart
-                data={rndDatasets(2, {
-                  fill: false,
-                })}
-              />
-            </Item>
-            <Item name='DoughnutChart' path='/doughnutchart' center={true}>
-              <DoughnutChart
-                data={rndDatasets(1)}
-                options={{
-                  legend: {
-                    display: false,
-                  },
-                  themedData: true,
-                }}
-              />
-            </Item>
-            <Item name='PieChart' path='/piechart' center={true}>
-              <PieChart
-                data={rndDatasets(1)}
-                options={{
-                  legend: {
-                    display: false,
-                  },
-                  themedData: true,
-                }}
-              />
-            </Item>
-            <Item name='PolarChart' path='/polarchart' center={true}>
-              <PolarChart
-                data={rndDatasets(1, {
-                  opacity: 0.2,
-                }, true)}
-                options={{
-                  themedData: true,
-                  legend: {
-                    position: 'right',
-                  },
-                  scale: {
-                    ticks: {
-                      beginAtZero: true,
-                    },
-                    reverse: false,
-                  },
-                }}
-              />
-            </Item>
-            <Item name='RadarChart' path='/radarchart' center={true}>
-              <RadarChart
-                data={rndDatasets(2, {
-                  opacity: 0.2,
-                }, true)}
-                options={{
-                  scale: {
-                    ticks: {
-                      beginAtZero: true,
-                    },
-                  },
-                }}
-              />
-            </Item>
-            <Item name='ScatterChart' path='/scatterchart' center={true}>
-              <ScatterChart
-                data={rndDatasets2d()}
-              />
-            </Item>
-          </Section>
+              </FormItem>
+            </Section>
+          </Box>
         </Box>
       </Box>
     );

@@ -1,130 +1,86 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, Heading, Paragraph, Text } from 'grommet';
-import Nav from './Nav';
+import styled from 'styled-components';
+import { Box, Heading, Paragraph, Markdown } from 'grommet';
+import PropsTable from './PropsTable';
 
-export default class Doc extends Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
+const LargeParagraph = styled(Paragraph)`
+  max-width: 100%;
+`;
 
-  render() {
-    const { children, desc, name, nav, example, examples, text } = this.props;
-    return (
-      <Box>
-        <Box
-          pad={{
-            horizontal: 'large', top: 'large',
+const DocInfo = ({ doc, example, examples }) => (
+  <Box>
+    <Box direction='row-responsive'>
+      <Box
+        margin={{
+          vertical: 'large',
+        }}
+        basis='1/2'
+        align='start'
+      >
+        <Heading level={1}>
+          <strong>{doc.displayName}</strong>
+        </Heading>
+        <Markdown
+          components={{
+            p: {
+              component: LargeParagraph,
+            },
           }}
         >
-          {nav ? <Nav top={false} /> : null}
-          <Box direction='row-responsive'>
-            <Box
-              margin={{
-                vertical: 'large',
-              }}
-              basis='1/2'
-              align='start'
-            >
-              <Heading level={1}>
-                <strong>{name}</strong>
-              </Heading>
-              {desc ? (
-                <Paragraph size='large'>
-                  {desc.description}
-                </Paragraph>
-              ) : null}
-              {text ? (
-                <Paragraph size='large'>
-                  {text}
-                </Paragraph>
-              ) : null}
-              {(desc && desc.availableAt) ? (
-                <Button href={desc.availableAt.url} target='_blank'>
-                  <img alt='Example badge' src={desc.availableAt.badge} />
-                </Button>
-              ) : null}
-            </Box>
-            <Box
-              flex={true}
-              pad={{
-                vertical: 'large',
-              }}
-            >
-              {example}
-            </Box>
-          </Box>
-        </Box>
-
-        {desc ? (
-          <Box
-            pad={{
-              horizontal: 'large', bottom: 'large',
-            }}
-          >
-            <Box pad='large' round='large' background='light-1'>
-              {desc.properties
-                ? desc.properties.map(property => (
-                  <Box
-                    key={property.name}
-                    direction='row-responsive'
-                    justify='between'
-                    align='start'
-                    border='bottom'
-                  >
-                    <Box
-                      basis='1/2'
-                      margin={{
-                        right: 'large',
-                      }}
-                    >
-                      <Heading level={3} size='small'>
-                        <strong>{property.name}</strong>
-                      </Heading>
-                      <Paragraph>{property.description}</Paragraph>
-                    </Box>
-                    <Box flex={true} align='start'>
-                      <Text><pre>{property.format}</pre></Text>
-                    </Box>
-                    {examples[property.name] ? (
-                      <Box
-                        flex={true}
-                        align='end'
-                        margin={{
-                          vertical: 'medium',
-                        }}
-                      >
-                        {examples[property.name] || null}
-                      </Box>
-                    ) : null}
-                  </Box>
-                ))
-                : <Text color='light-5'>No properties</Text>
-              }
-            </Box>
-          </Box>
-        ) : null}
-
-        {children}
+          {doc.description}
+        </Markdown>
       </Box>
-    );
-  }
-}
+      <Box
+        flex={true}
+        pad={{
+          vertical: 'large',
+        }}
+      >
+        {example && example()}
+      </Box>
+    </Box>
+    <Box
+      pad={{
+        horizontal: 'large', bottom: 'large',
+      }}
+    >
+      <PropsTable
+        properties={doc.props}
+        componentName={doc.displayName}
+        examples={examples}
+      />
+    </Box>
+  </Box>
+);
+
+const Doc = ({ children, desc, examples }) => (
+  <Box
+    pad={{
+      horizontal: 'large', top: 'large',
+    }}
+  >
+    {console.log(desc)}
+    {desc ? desc.map((doc, index) => (
+      <DocInfo
+        key={doc.displayName}
+        doc={doc}
+        example={index === 0 ? examples.main : undefined}
+        examples={index === 0 ? examples : undefined}
+      />
+    )) : null}
+    {children}
+  </Box>
+);
 
 Doc.propTypes = {
-  desc: PropTypes.object,
-  example: PropTypes.node,
+  desc: PropTypes.array,
   examples: PropTypes.object,
-  name: PropTypes.string.isRequired,
-  nav: PropTypes.bool,
-  text: PropTypes.string,
 };
 
 Doc.defaultProps = {
   desc: undefined,
-  example: null,
   examples: {},
-  nav: true,
-  text: undefined,
 };
 
+export default Doc;

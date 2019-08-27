@@ -2,6 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const dedupeDependencies = (dependencies, alias) => (
+  dependencies.reduce((res, dependecy) => ({
+    ...res, [dependecy]: path.resolve(`./node_modules/${dependecy}`),
+  }), alias)
+);
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -30,4 +36,10 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: dedupeDependencies(
+      ['@babel', 'styled-components', 'grommet', 'grommet-icons', 'react', 'react-dom', 'react-router', 'react-router-dom'], {}
+    ),
+  },
+
 };

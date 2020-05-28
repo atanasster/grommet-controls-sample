@@ -160,7 +160,7 @@ export default class Components extends Component {
     return (
       <Box direction='row'>
         <SideMenu
-          width='small'
+          width='medium'
           title='Inbox'
           items={[
             {

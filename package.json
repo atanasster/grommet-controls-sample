@@ -18,17 +18,17 @@
   },
   "dependencies": {
     "chart.js": "^2.8.0",
-    "grommet": "^2.7.3",
-    "grommet-controls": "^2.0.0-alpha1",
+    "grommet": "^2.13.0",
+    "grommet-controls": "^2.0.4",
     "grommet-icons": "^4.2.0",
     "prop-types": "^15.6.2",
-    "react": "^16.9.0",
+    "react": "^16.13.1",
     "react-chartjs-2": "^2.7.4",
     "react-desc": "^4.1.2",
-    "react-dom": "^16.9.0",
-    "react-router": "^5.0.1",
-    "react-router-dom": "^5.0.1",
-    "styled-components": "^4.3.2",
+    "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.1.1",
     "url-search-params": "^0.10.0"
   },
   "devDependencies": {
@@ -50,9 +50,6 @@
     "pre-commit": "^1.2.2",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
-  },
-  "pre-commit": [
-    "check"
-  ]
+    "webpack-dev-server": "^3.11.0"
+  }
 }

@@ -85,8 +85,8 @@ export default class App extends Component {
         <Grommet theme={theme ? THEMES[theme] : undefined}>
           <Page>
             <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/:component' component={ComponentDoc} />
+              <Route exact={true} path='/' component={Home} />
+              <Route exact={true} path='/:component' component={ComponentDoc} />
             </Switch>
           </Page>
         </Grommet>

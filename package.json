@@ -18,9 +18,9 @@
   },
   "dependencies": {
     "chart.js": "^2.8.0",
-    "grommet": "^2.13.0",
-    "grommet-controls": "^2.0.4",
-    "grommet-icons": "^4.2.0",
+    "grommet": "^2.15.0",
+    "grommet-controls": "^3.0.1",
+    "grommet-icons": "^4.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.7.4",

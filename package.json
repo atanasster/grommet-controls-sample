@@ -17,7 +17,7 @@
     "pub": "pushd ./ && npm run build && cd dist && npm publish && popd"
   },
   "dependencies": {
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "grommet": "^2.15.0",
     "grommet-controls": "^3.0.1",
     "grommet-icons": "^4.4.0",
